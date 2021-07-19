@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 
 public class BudgetDetail {
 // mtInvAffecte = 80 , mtFnctAffecte = 20 , mtCreditOuvInv = 5 , mtCreditOuvFct = 30 (creditOuv = 35 )
-// mtInvReel = 107 , mtFnctReel = 28 , mtInvPaye = 70 , mtInvReserve = 35 , mtInvReserveReliquat = 2 ( reel - reserve -paye)
-	// mtInvPayeReliquat = 37 ( reel - paye )
+// mtInvReel = 107 , mtFnctReel = 28 , mtInvPaye = 70 , mtInvReserve = 35 , mtInvReserveReliquat = 2 ( mtInvReel - mtInvReserve - mtInvPaye)
+	// mtInvPayeReliquat = 37 ( mtInvReel - mtInvPaye )
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

@@ -1,24 +1,34 @@
-package com.example.testpfe.dao;
+package com.example.testpfe.service.facade;
 
 import com.example.testpfe.bean.Budget;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.testpfe.bean.BudgetDetail;
+import com.example.testpfe.vo.BudgetVo;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface BudgetDao extends JpaRepository <Budget, Long> {
+public interface BudgetService {
+
+    Budget save (Budget budget);
+
+    Budget update (Budget budget);
+
+    int deleteByAnnee (Integer annee);
+
+    int deleteByAnnee (List<Budget> budgets);
 
     Budget findByBudgetDetail (String budgetDetail);
 
     Budget findByDescription(String description);
 
-    List <Budget> findByAnnee (Integer annee);
+    List<Budget> findByAnnee (Integer annee);
 
     List <Budget> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve (BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
 
     List <Budget> findByBudgetDetailMtInvReelAndMtInvPaye (BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
-    int deleteByAnnee(Integer annee);
+    List<Budget> search (BudgetVo budgetVo);
 
-    int deleteByAnnee (List<Budget> budgets);
+    List<Budget> findAll () ;
+
 }
