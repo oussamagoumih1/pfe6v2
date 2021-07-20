@@ -2,9 +2,11 @@ package com.example.testpfe.dao;
 
 import com.example.testpfe.bean.BudgetDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 
+@Repository
 public interface BudgetDetailDao extends JpaRepository <BudgetDetail, Long> {
 
     BudgetDetail findByMtInvReserve (BigDecimal mtInvReserve);
