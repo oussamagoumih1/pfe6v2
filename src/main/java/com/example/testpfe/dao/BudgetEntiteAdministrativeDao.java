@@ -3,12 +3,10 @@ package com.example.testpfe.dao;
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.bean.EntiteAdministrative;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Repository
 public interface BudgetEntiteAdministrativeDao extends JpaRepository <BudgetEntiteAdministrative, Long> {
 
     BudgetEntiteAdministrative findByBudgetDetail (String budgetDetail);
