@@ -1,4 +1,4 @@
-package com.example.testpfe.ws.provided.facade;
+package com.example.testpfe.ws.provided;
 
 import com.example.testpfe.Vo.EtatVoeuxVo;
 import com.example.testpfe.bean.EtatVoeux;
