@@ -1,5 +1,8 @@
 package com.example.testpfe.dao;
 
+<<<<<<< HEAD
+public interface BudgetDetailDao {
+=======
 import com.example.testpfe.bean.BudgetDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -36,4 +39,5 @@ public interface BudgetDetailDao extends JpaRepository <BudgetDetail, Long> {
     int deleteByMtInvPayeReliquat (BigDecimal mtInvPayeReliquat);
 
 
+>>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
 }

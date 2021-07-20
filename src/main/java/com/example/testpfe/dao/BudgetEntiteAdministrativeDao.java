@@ -1,5 +1,8 @@
 package com.example.testpfe.dao;
 
+<<<<<<< HEAD
+public interface BudgetEntiteAdministrativeDao {
+=======
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.bean.EntiteAdministrative;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +28,5 @@ public interface BudgetEntiteAdministrativeDao extends JpaRepository <BudgetEnti
 
     int deleteByBudgetAnnee (Integer annee);
 
+>>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
 }

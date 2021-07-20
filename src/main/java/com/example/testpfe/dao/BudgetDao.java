@@ -4,6 +4,17 @@ import com.example.testpfe.bean.Budget;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< HEAD
+import java.util.List;
+
+public interface BudgetDao extends JpaRepository <Budget ,Long> {
+
+    Budget findByAnnee (Integer annee);
+
+    Budget findByDescription(String description);
+
+
+=======
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,4 +34,5 @@ public interface BudgetDao extends JpaRepository <Budget, Long> {
     int deleteByAnnee(Integer annee);
 
     int deleteByAnnee (List<Budget> budgets);
+>>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
 }
