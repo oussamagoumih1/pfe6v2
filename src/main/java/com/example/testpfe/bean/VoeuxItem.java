@@ -51,7 +51,11 @@ public class VoeuxItem {
 		this.qteDemande = qteDemande;
 	}
 
+<<<<<<< HEAD
 	public BigDecimal getQteAccorde(BigDecimal qtExpd) {
+=======
+	public BigDecimal getQteAccorde() {
+>>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
 		return qteAccorde;
 	}
 

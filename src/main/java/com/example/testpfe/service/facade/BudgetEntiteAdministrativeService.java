@@ -1,16 +1,13 @@
-package com.example.testpfe.dao;
+package com.example.testpfe.service.facade;
 
-<<<<<<< HEAD
-public interface BudgetEntiteAdministrativeDao {
-=======
+import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
-import com.example.testpfe.bean.EntiteAdministrative;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface BudgetEntiteAdministrativeDao extends JpaRepository <BudgetEntiteAdministrative, Long> {
+public interface BudgetEntiteAdministrativeService {
 
     BudgetEntiteAdministrative findByBudgetDetail (String budgetDetail);
 
@@ -28,5 +25,12 @@ public interface BudgetEntiteAdministrativeDao extends JpaRepository <BudgetEnti
 
     int deleteByBudgetAnnee (Integer annee);
 
->>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
+    BudgetEntiteAdministrative save (BudgetEntiteAdministrative budgetEntiteAdministrative, String libelleEntiteAdministrative);
+
+    BudgetEntiteAdministrative update(BudgetEntiteAdministrative budgetEntiteAdministrative);
+
+    List<BudgetEntiteAdministrative> search (BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo);
+
+    List<BudgetEntiteAdministrative> findAll () ;
+
 }
