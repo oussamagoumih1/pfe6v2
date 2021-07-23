@@ -29,10 +29,6 @@ public class EtatVoeuxProvided {
     public EtatVoeux findByCode(@PathVariable String code){
     return etatVoeuxService.findByCode(code);
 }
-@DeleteMapping("/libelle/{libelle}")
-    public int deleteByReference(@PathVariable String reference){
-    return etatVoeuxService.deleteByReference(reference);
-}
 @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code){
     return etatVoeuxService.deleteByCode(code);

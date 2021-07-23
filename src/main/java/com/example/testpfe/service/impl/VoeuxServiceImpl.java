@@ -38,14 +38,6 @@ public class VoeuxServiceImpl implements VoeuxService {
         return voeuxDao.deleteByReference(reference);
     }
 
-    @Override
-    public int deleteByReference(List<Voeux> voeuxes) {
-        int res = 0;
-        for (int i = 0; i < voeuxes.size(); i++) {
-            res += deleteByReference(voeuxes.get(i).getReference());
-        }
-        return res;
-    }
 
     @Override
     public Voeux findByDescription(String description) {
@@ -58,19 +50,27 @@ public class VoeuxServiceImpl implements VoeuxService {
     }
 
     @Override
-    public List<Voeux> findByBudgetAnneAndDescription(Integer annee, String description) {
-        return voeuxDao.findByBudgetAnneAndDescription(annee, description);
+    public List<Voeux> findByBudgetAnneeAndDescription(Integer annee, String description) {
+        return voeuxDao.findByBudgetAnneeAndDescription(annee, description);
     }
 
     @Override
-    public List<Voeux> findByEtatVoeuxLibelleAndCode(String libelle, String code) {
-        return voeuxDao.findByEtatVoeuxLibelleAndCode(libelle, code);
+    public List<Voeux> findByEntiteAdministrative(String entiteAdministrative) {
+        return voeuxDao.findByEntiteAdministrative(entiteAdministrative);
     }
 
     @Override
-    public List<Voeux> findByEntiteAdministrativeLibelleAndCode(String libelle, String code) {
-        return voeuxDao.findByEntiteAdministrativeLibelleAndCode(libelle,code);
+    public List<Voeux> findByEntiteAdministrativeCode(String code) {
+        return voeuxDao.findByEntiteAdministrativeCode(code);
     }
+
+
+    @Override
+    public List<Voeux> findByEtatVoeuxLibelle(String libelle) {
+        return voeuxDao.findByEtatVoeuxLibelle(libelle);
+    }
+
+
 
     @Override
     public List<Voeux> findByVoeuxItemsProduit(Produit produit) {

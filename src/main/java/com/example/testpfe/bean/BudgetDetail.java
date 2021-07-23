@@ -11,14 +11,14 @@ import java.math.BigDecimal;
 @Entity
 
 public class BudgetDetail {
-// mtInvAffecte = 80 , mtFnctAffecte = 20 , mtCreditOuvInv = 5 , mtCreditOuvFct = 30 (creditOuv = 35 )
+/* mtInvAffecte = 80 , mtFnctAffecte = 20 , mtCreditOuvInv = 5 , mtCreditOuvFct = 30 (creditOuv = 35 )
 <<<<<<< HEAD
 // mtInvReel = 107 , mtFnctReel = 28 , mtInvPaye = 70 , mtInvReserve = 35 , mtInvReserveReliquat = 2 ( reel - reserve -paye)
 	// mtInvPayeReliquat = 37 ( reel - paye )
 =======
 // mtInvReel = 107 , mtFnctReel = 28 , mtInvPaye = 70 , mtInvReserve = 35 , mtInvReserveReliquat = 2 ( mtInvReel - mtInvReserve - mtInvPaye)
 	// mtInvPayeReliquat = 37 ( mtInvReel - mtInvPaye )
->>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
+>>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/ */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

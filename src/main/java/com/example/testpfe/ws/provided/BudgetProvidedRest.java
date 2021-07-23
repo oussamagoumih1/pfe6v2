@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
+@RequestMapping("/pfe/Budget")
 public class BudgetProvidedRest {
     @Autowired
     private BudgetService budgetService;
@@ -29,10 +30,6 @@ public class BudgetProvidedRest {
         return budgetService.deleteByAnnee(annee);
     }
 
-    @PostMapping("/delete-multiple-by-annee")
-    public int deleteByAnnee(@RequestBody List<Budget> budgets) {
-        return budgetService.deleteByAnnee(budgets);
-    }
 
     @GetMapping("/budgetDetail/{budgetDetail}")
     public Budget findByBudgetDetail(@PathVariable String budgetDetail) {
@@ -49,15 +46,6 @@ public class BudgetProvidedRest {
         return budgetService.findByAnnee(annee);
     }
 
-    @GetMapping("/budgetDetailMtInvReel/{mtInvReel}/budgetDetailMtInvPaye/{mtInvPaye}/budgetDetailMtInvReserve/{mtInvReserve}")
-    public List<Budget> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye,@PathVariable BigDecimal mtInvReserve) {
-        return budgetService.findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
-
-    @GetMapping("/budgetDetailMtInvReel/{mtInvReel}/budgetDetailMtInvPaye/{mtInvPaye}")
-    public List<Budget> findByBudgetDetailMtInvReelAndMtInvPaye(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye) {
-        return budgetService.findByBudgetDetailMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
-    }
 
     @GetMapping("/")
     public List<Budget> findAll() {

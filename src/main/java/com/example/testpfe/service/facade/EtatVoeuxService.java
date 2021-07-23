@@ -12,7 +12,6 @@ public interface EtatVoeuxService {
     EtatVoeux findByLibelle(String libelle);
     EtatVoeux findByCode(String code);
     int deleteByCode(String code);
-    int deleteByReference(String reference);
     List<EtatVoeux> search(EtatVoeuxVo etatVoeuxVo);
     List<EtatVoeux> findAll();
 }

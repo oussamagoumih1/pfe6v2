@@ -9,6 +9,6 @@ public interface EtatVoeuxDao extends JpaRepository<EtatVoeux, Long> {
     EtatVoeux findByLibelle(String libelle);
     EtatVoeux findByCode(String code);
     int deleteByCode(String code);
-    int deleteByReference(String reference);
+
 
 }

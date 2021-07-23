@@ -7,10 +7,11 @@ import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
+
 import java.util.List;
 
 @RestController
+@RequestMapping("/testpfe/BudgetEntiteAdministrative")
 public class BudgetEntiteAdministrativeProvidedRest {
     @Autowired
     private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;
@@ -40,11 +41,6 @@ public class BudgetEntiteAdministrativeProvidedRest {
         return budgetEntiteAdministrativeService.findByBudgetAnnee(annee);
     }
 
-    @GetMapping("/budgetDetailMtInvReel/{mtInvReel}/budgetDetailMtInvPaye/{mtInvPaye}/budgetDetailMtInvReserve/{mtInvReserve}")
-    public List<BudgetEntiteAdministrative> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye,@PathVariable BigDecimal mtInvReserve) {
-        return budgetEntiteAdministrativeService.findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
-
     @DeleteMapping("/entiteAdministrativeLibelle/{libelle}")
     public int deleteByEntiteAdministrativeLibelle(@PathVariable String libelle) {
         return budgetEntiteAdministrativeService.deleteByEntiteAdministrativeLibelle(libelle);
@@ -60,10 +56,10 @@ public class BudgetEntiteAdministrativeProvidedRest {
         return budgetEntiteAdministrativeService.save(budgetEntiteAdministrative, libelleEntiteAdministrative);
     }
 
-    @PutMapping("/")
+    /*@PutMapping("/")
     public BudgetEntiteAdministrative update(@RequestBody BudgetEntiteAdministrative budgetEntiteAdministrative) {
         return budgetEntiteAdministrativeService.update(budgetEntiteAdministrative);
-    }
+    }*/
 
     @PostMapping("/search")
     public List<BudgetEntiteAdministrative> search(@RequestBody BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo) {

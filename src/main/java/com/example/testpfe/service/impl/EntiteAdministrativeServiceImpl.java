@@ -51,14 +51,6 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
         return entiteAdministrativeDao.deleteByLibelle(libelle);
     }
 
-    @Override
-    public int deleteByLibelle(List<EntiteAdministrative> entiteAdministratives) {
-        int res = 0;
-        for (int i = 0; i < entiteAdministratives.size(); i++) {
-            res += deleteByLibelle(entiteAdministratives.get(i).getLibelle());
-        }
-        return res;
-    }
 
     @Override
     public List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo) {

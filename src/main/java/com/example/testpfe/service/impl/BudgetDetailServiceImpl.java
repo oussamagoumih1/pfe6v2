@@ -1,9 +1,9 @@
 package com.example.testpfe.service.impl;
 
+
 import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.dao.BudgetDetailDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
-
 import com.example.testpfe.vo.BudgetDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +20,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     private EntityManager entityManager;
 
 
-    @Override
-    public BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve) {
-        return budgetDetailDao.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
+
 
     @Override
     public BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve) {
@@ -147,6 +144,11 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
             budgetDetail.setMtInvReserveReliquat(nvMtInvReserveReliquat);
             return 1;
         }
+    }
+
+    @Override
+    public BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve) {
+        return budgetDetailDao.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
     }
 
     @Override

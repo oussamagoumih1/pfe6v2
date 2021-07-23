@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/pfe/EntiteAdministrative")
 public class EntiteAdministrativeProvidedRest {
     @Autowired
     private EntiteAdministrativeService entiteAdministrativeService;
@@ -43,10 +44,6 @@ public class EntiteAdministrativeProvidedRest {
         return entiteAdministrativeService.deleteByLibelle(libelle);
     }
 
-    @PostMapping("/delete-multiple-by-libelle")
-    public int deleteByLibelle(@RequestBody List<EntiteAdministrative> entiteAdministratives) {
-        return entiteAdministrativeService.deleteByLibelle(entiteAdministratives);
-    }
 
     @PostMapping("/search")
     public List<EntiteAdministrative> search(@RequestBody EntiteAdministrativeVo entiteAdministrativeVo) {

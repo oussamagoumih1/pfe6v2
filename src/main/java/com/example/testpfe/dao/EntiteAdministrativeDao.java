@@ -1,8 +1,6 @@
 package com.example.testpfe.dao;
 
-<<<<<<< HEAD
-public interface EntiteAdministrativeDao {
-=======
+
 import com.example.testpfe.bean.EntiteAdministrative;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EntiteAdministrativeDao extends JpaRepository <EntiteAdministrative, Long> {
+public interface EntiteAdministrativeDao extends JpaRepository<EntiteAdministrative, Long> {
 
     EntiteAdministrative findByCode (String code);
 
@@ -20,7 +18,5 @@ public interface EntiteAdministrativeDao extends JpaRepository <EntiteAdministra
 
     int deleteByLibelle (String libelle);
 
-    int deleteByLibelle (List<EntiteAdministrative> entiteAdministratives);
 
->>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/
 }

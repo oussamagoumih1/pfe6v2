@@ -15,17 +15,11 @@ public interface BudgetService {
 
     int deleteByAnnee (Integer annee);
 
-    int deleteByAnnee (List<Budget> budgets);
-
     Budget findByBudgetDetail (String budgetDetail);
 
     Budget findByDescription(String description);
 
     List<Budget> findByAnnee (Integer annee);
-
-    List <Budget> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve (BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
-
-    List <Budget> findByBudgetDetailMtInvReelAndMtInvPaye (BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
     List<Budget> search (BudgetVo budgetVo);
 

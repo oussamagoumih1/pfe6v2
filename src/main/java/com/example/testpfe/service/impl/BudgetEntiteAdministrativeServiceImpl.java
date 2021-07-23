@@ -48,11 +48,6 @@ public class BudgetEntiteAdministrativeServiceImpl implements BudgetEntiteAdmini
     }
 
     @Override
-    public List<BudgetEntiteAdministrative> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve) {
-        return budgetEntiteAdministrativeDao.findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
-
-    @Override
     public int deleteByEntiteAdministrativeLibelle(String libelle) {
         return budgetEntiteAdministrativeDao.deleteByEntiteAdministrativeLibelle(libelle);
     }

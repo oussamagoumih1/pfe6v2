@@ -19,8 +19,6 @@ public interface BudgetEntiteAdministrativeService {
 
     List<BudgetEntiteAdministrative> findByBudgetAnnee (Integer annee);
 
-    List<BudgetEntiteAdministrative> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve (BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
-
     int deleteByEntiteAdministrativeLibelle (String libelle);
 
     int deleteByBudgetAnnee (Integer annee);

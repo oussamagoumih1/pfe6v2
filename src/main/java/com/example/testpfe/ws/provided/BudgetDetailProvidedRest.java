@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
+@RequestMapping("/testpfe/BudgetDetail")
 public class BudgetDetailProvidedRest {
     @Autowired
     private BudgetDetailService budgetDetailService;

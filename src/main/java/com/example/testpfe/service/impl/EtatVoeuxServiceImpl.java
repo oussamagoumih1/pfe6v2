@@ -46,18 +46,13 @@ public class EtatVoeuxServiceImpl implements EtatVoeuxService {
     }
 
     @Override
-    public int deleteByReference(String reference) {
-        return etatVoeuxDao.deleteByReference(reference);
-    }
-
-    @Override
     public List<EtatVoeux> search(EtatVoeuxVo etatVoeuxVo) {
         String q = "select ev from EtatVoeux ev where 1=1";
         if (etatVoeuxVo.getLibelle()!=null){
             q += " And ev.libelle LIKE '%" + etatVoeuxVo.getLibelle() + "%'";
         }
         if (etatVoeuxVo.getCode()!=null){
-            q += " And ev.code LIKE '%" + etatVoeuxVo.getCode() + "%'";
+            q += " And ev.code = '%" + etatVoeuxVo.getCode() + "%'";
         }
         return  entityManager.createQuery(q).getResultList();
     }

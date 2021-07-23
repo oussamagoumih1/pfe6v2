@@ -13,11 +13,12 @@ public interface VoeuxDao extends JpaRepository<Voeux, Long> {
 
     Voeux findByDescription(String description);
     Voeux findByReference(String reference);
-    List<Voeux> findByBudgetAnneAndDescription(Integer annee, String description);
-    List<Voeux> findByEtatVoeuxLibelleAndCode(String libelle, String code);
-    List<Voeux> findByEntiteAdministrativeLibelleAndCode(String libelle, String code);
+    List<Voeux> findByBudgetAnneeAndDescription(Integer annee, String description);
+    List<Voeux> findByEtatVoeuxLibelle(String libelle);
+    List<Voeux> findByEntiteAdministrative (String entiteAdministrative);
+    List<Voeux> findByEntiteAdministrativeCode(String code);
     List<Voeux> findByVoeuxItemsProduit(Produit produit);
     int deleteByReference(String reference);
-    int deleteByReference(List<Voeux> voeuxes);
+
 
 }

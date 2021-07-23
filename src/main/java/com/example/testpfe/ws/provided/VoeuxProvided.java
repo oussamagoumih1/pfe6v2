@@ -27,10 +27,7 @@ public class VoeuxProvided {
     public int deleteByReference(@PathVariable String reference){
     return voeuxService.deleteByReference(reference);
 }
-@PostMapping("/delete-multiple-by-reference")
-    public int deleteByReference(@RequestBody List<Voeux> voeuxes){
-    return voeuxService.deleteByReference(voeuxes);
-}
+
 @GetMapping("/description/{description}")
     public Voeux findByDescription(@PathVariable String description){
     return voeuxService.findByDescription(description);
@@ -41,16 +38,16 @@ public class VoeuxProvided {
 }
 @GetMapping("/budget/annee/{annee}/description/{description}")
     public List<Voeux> findByBudgetAnneeAndDescription(@PathVariable Integer annee, String reference){
-    return voeuxService.findByBudgetAnneAndDescription(annee, reference);
+    return voeuxService.findByBudgetAnneeAndDescription(annee, reference);
 }
 
-@GetMapping("/etatVoeux/libelle/{libelle}/code/{code}")
-    public List<Voeux> findByEtatVoeuxLibelleAndCode(@PathVariable String libelle, String code){
-    return  voeuxService.findByEtatVoeuxLibelleAndCode(libelle, code);
+@GetMapping("/etatVoeux/libelle/{libelle}")
+    public List<Voeux> findByEtatVoeuxLibelleAndCode(@PathVariable String libelle){
+    return  voeuxService.findByEtatVoeuxLibelle(libelle);
 }
 @GetMapping("/entiteAdministrative/libelle/{libelle}/code/{code}")
     public List<Voeux> findByEntiteAdministrativeLibelleAndCode(@PathVariable String libelle, String code){
-    return voeuxService.findByEntiteAdministrativeLibelleAndCode(libelle, code);
+    return voeuxService.findByEntiteAdministrativeCode(code);
 }
 @GetMapping("/voeuxItem/produit/{produit}")
     public List<Voeux> findByVoeuxItemsProduit(@PathVariable Produit produit){

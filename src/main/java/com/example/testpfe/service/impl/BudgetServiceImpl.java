@@ -32,20 +32,10 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    @Transactional
     public int deleteByAnnee(Integer annee) {
         return budgetDao.deleteByAnnee(annee);
     }
 
-    @Override
-    @Transactional
-    public int deleteByAnnee(List<Budget> budgets) {
-        int res = 0;
-        for (int i = 0; i < budgets.size(); i++) {
-            res += deleteByAnnee(budgets.get(i).getAnnee());
-        }
-        return res;
-    }
 
     @Override
     public Budget findByBudgetDetail(String budgetDetail) {
@@ -62,15 +52,6 @@ public class BudgetServiceImpl implements BudgetService {
         return budgetDao.findByAnnee(annee);
     }
 
-    @Override
-    public List<Budget> findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve) {
-        return budgetDao.findByBudgetDetailMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
-
-    @Override
-    public List<Budget> findByBudgetDetailMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye) {
-        return budgetDao.findByBudgetDetailMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
-    }
 
     @Override
     public List<Budget> search(BudgetVo budgetVo) {
