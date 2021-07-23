@@ -14,8 +14,19 @@ public class Paiement {
     private Date datePaiement;
     @ManyToOne
     private TypePaiement typePaiement;
+    
+    @ManyToOne
+    private Commande commande;
+ public Paiement() {
+    }
 
-    public Paiement() {
+    public Paiement(Long id, String reference, BigDecimal montant, Date datePaiement, TypePaiement typePaiement, Commande commande) {
+        this.id = id;
+        this.reference = reference;
+        this.montant = montant;
+        this.datePaiement = datePaiement;
+        this.typePaiement = typePaiement;
+        this.commande = commande;
     }
 
     public Long getId() {
@@ -57,4 +68,13 @@ public class Paiement {
     public void setTypePaiement(TypePaiement typePaiement) {
         this.typePaiement = typePaiement;
     }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
 }
