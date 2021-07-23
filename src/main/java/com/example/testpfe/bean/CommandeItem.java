@@ -14,50 +14,69 @@ public class CommandeItem {
 	@ManyToOne
 	private Produit produit;
 	private BigDecimal qteCommandee;
+	private BigDecimal prix;
 	private BigDecimal qteLivree;
 	@ManyToOne
 	private Commande commande;
 
-	public CommandeItem() {
-	}
+	
+    public CommandeItem() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public CommandeItem(Long id, Produit produit, BigDecimal qteCommandee, BigDecimal prix, BigDecimal qteLivree, Commande commande) {
+        this.id = id;
+        this.produit = produit;
+        this.qteCommandee = qteCommandee;
+        this.prix = prix;
+        this.qteLivree = qteLivree;
+        this.commande = commande;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Produit getProduit() {
-		return produit;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
+    public Produit getProduit() {
+        return produit;
+    }
 
-	public BigDecimal getQteCommandee() {
-		return qteCommandee;
-	}
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
 
-	public void setQteCommandee(BigDecimal qteCommandee) {
-		this.qteCommandee = qteCommandee;
-	}
+    public BigDecimal getQteCommandee() {
+        return qteCommandee;
+    }
 
-	public BigDecimal getQteLivree() {
-		return qteLivree;
-	}
+    public void setQteCommandee(BigDecimal qteCommandee) {
+        this.qteCommandee = qteCommandee;
+    }
 
-	public void setQteLivree(BigDecimal qteLivree) {
-		this.qteLivree = qteLivree;
-	}
+    public BigDecimal getPrix() {
+        return prix;
+    }
 
-	public Commande getCommande() {
-		return commande;
-	}
+    public void setPrix(BigDecimal prix) {
+        this.prix = prix;
+    }
 
-	public void setCommande(Commande commande) {
-		this.commande = commande;
-	}
+    public BigDecimal getQteLivree() {
+        return qteLivree;
+    }
+
+    public void setQteLivree(BigDecimal qteLivree) {
+        this.qteLivree = qteLivree;
+    }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
 }
