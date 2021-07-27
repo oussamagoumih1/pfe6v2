@@ -20,8 +20,6 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     private EntityManager entityManager;
 
 
-
-
     @Override
     public BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve) {
         return budgetDetailDao.findByMtInvReserve(mtInvReserve);
@@ -84,8 +82,8 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
 
     @Override
     public BudgetDetail save(BudgetDetail budgetDetail) {
-        if (findByMtInvPayeReliquat(budgetDetail.getMtInvPayeReliquat())==null)
-        budgetDetailDao.save(budgetDetail);
+        if (findByMtInvPayeReliquat(budgetDetail.getMtInvPayeReliquat()) == null)
+            budgetDetailDao.save(budgetDetail);
         return budgetDetail;
     }
 
@@ -96,20 +94,20 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
 
     @Override
     public List<BudgetDetail> search(BudgetDetailVo budgetDetailVo) {
-        String q =  "select bd from BudgetDetail bd where 1=1";
-        if(budgetDetailVo.getId()!=null){
-            q += " And bd.id LIKE '%" + budgetDetailVo.getId()+"%'";
+        String q = "select bd from BudgetDetail bd where 1=1";
+        if (budgetDetailVo.getId() != null) {
+            q += " And bd.id LIKE '%" + budgetDetailVo.getId() + "%'";
         }
-        if (budgetDetailVo.getMtInvPayeReliquatMin()!=null){
+        if (budgetDetailVo.getMtInvPayeReliquatMin() != null) {
             q += " And bd.mtInvPayeReliquat >= " + budgetDetailVo.getMtInvPayeReliquatMin();
         }
-        if (budgetDetailVo.getMtInvPayeReliquatMax()!=null){
+        if (budgetDetailVo.getMtInvPayeReliquatMax() != null) {
             q += " And bd.mtInvPayeReliquat <= " + budgetDetailVo.getMtInvPayeReliquatMax();
         }
-        if (budgetDetailVo.getMtInvReserveReliquatMin()!=null){
+        if (budgetDetailVo.getMtInvReserveReliquatMin() != null) {
             q += " And bd.mtInvReserveReliquat >= " + budgetDetailVo.getMtInvReserveReliquatMin();
         }
-        if (budgetDetailVo.getMtInvReserveReliquatMax()!=null){
+        if (budgetDetailVo.getMtInvReserveReliquatMax() != null) {
             q += " And bd.mtInvReserveReliquat <= " + budgetDetailVo.getMtInvReserveReliquatMax();
         }
         return entityManager.createQuery(q).getResultList();
@@ -118,15 +116,15 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     @Override
     public int calculerMtInvPayeReliquat(BigDecimal mtInvReel, BigDecimal mtInvPaye) {
         BudgetDetail budgetDetail = budgetDetailDao.findByMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
-        if (budgetDetail == null){
+        if (budgetDetail == null) {
             return -1;
-        } else  if (budgetDetail.getMtInvPayeReliquat() != (mtInvReel.subtract(mtInvPaye) )){
+        } else if (budgetDetail.getMtInvPayeReliquat() .compareTo (mtInvReel.subtract(mtInvPaye)) <0) {
             return -2;
-        }else{
-    BigDecimal nvMtInvPayeReliquat = budgetDetail.getMtInvPayeReliquat();
-     nvMtInvPayeReliquat = (mtInvReel.subtract(mtInvPaye));
-     budgetDetail.setMtInvPayeReliquat(nvMtInvPayeReliquat);
-     return 1;
+        } else {
+            BigDecimal nvMtInvPayeReliquat = budgetDetail.getMtInvPayeReliquat();
+            nvMtInvPayeReliquat = (mtInvReel.subtract(mtInvPaye));
+            budgetDetail.setMtInvPayeReliquat(nvMtInvPayeReliquat);
+            return 1;
         }
     }
 
@@ -134,13 +132,13 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     @Override
     public int calculerMtInvReserveReliquat(BigDecimal mtInvReel, BigDecimal mtInvReserve, BigDecimal mtInvPaye) {
         BudgetDetail budgetDetail = budgetDetailDao.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-        if (budgetDetail == null){
+        if (budgetDetail == null) {
             return -1;
-        } else  if (budgetDetail.getMtInvReserveReliquat()!= (mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye) )){
+        } else if (budgetDetail.getMtInvReserveReliquat().compareTo (mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye)) <0) {
             return -2;
-        }else{
+        } else {
             BigDecimal nvMtInvReserveReliquat = budgetDetail.getMtInvReserveReliquat();
-            nvMtInvReserveReliquat = (mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye) );
+            nvMtInvReserveReliquat = (mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye));
             budgetDetail.setMtInvReserveReliquat(nvMtInvReserveReliquat);
             return 1;
         }

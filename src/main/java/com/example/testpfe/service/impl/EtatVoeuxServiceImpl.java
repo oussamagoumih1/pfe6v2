@@ -18,11 +18,12 @@ public class EtatVoeuxServiceImpl implements EtatVoeuxService {
 
     @Autowired
     private EntityManager entityManager;
+
     @Override
     public EtatVoeux save(EtatVoeux etatVoeux) {
-   if(findByLibelle(etatVoeux.getLibelle()) == null)
-       etatVoeuxDao.save(etatVoeux);
-   return etatVoeux;
+        if (findByLibelle(etatVoeux.getLibelle()) == null)
+            etatVoeuxDao.save(etatVoeux);
+        return etatVoeux;
     }
 
     @Override
@@ -48,13 +49,13 @@ public class EtatVoeuxServiceImpl implements EtatVoeuxService {
     @Override
     public List<EtatVoeux> search(EtatVoeuxVo etatVoeuxVo) {
         String q = "select ev from EtatVoeux ev where 1=1";
-        if (etatVoeuxVo.getLibelle()!=null){
+        if (etatVoeuxVo.getLibelle() != null) {
             q += " And ev.libelle LIKE '%" + etatVoeuxVo.getLibelle() + "%'";
         }
-        if (etatVoeuxVo.getCode()!=null){
+        if (etatVoeuxVo.getCode() != null) {
             q += " And ev.code = '%" + etatVoeuxVo.getCode() + "%'";
         }
-        return  entityManager.createQuery(q).getResultList();
+        return entityManager.createQuery(q).getResultList();
     }
 
     @Override

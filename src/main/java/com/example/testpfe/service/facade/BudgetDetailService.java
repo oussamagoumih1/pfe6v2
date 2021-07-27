@@ -9,41 +9,41 @@ import java.util.List;
 
 public interface BudgetDetailService {
 
-    BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve (BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
+    BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
 
-    BudgetDetail findByMtInvReserve (BigDecimal mtInvReserve);
+    BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);
 
-    BudgetDetail findByMtInvReel (BigDecimal mtInvReel);
+    BudgetDetail findByMtInvReel(BigDecimal mtInvReel);
 
-    BudgetDetail findByMtInvPaye (BigDecimal mtInvPaye);
+    BudgetDetail findByMtInvPaye(BigDecimal mtInvPaye);
 
-    BudgetDetail findByMtInvReserveReliquat (BigDecimal mtInvReserveReliquat);
+    BudgetDetail findByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
 
-    BudgetDetail findByMtInvPayeReliquat (BigDecimal mtInvPayeReliquat);
+    BudgetDetail findByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
 
-    BudgetDetail findByMtFnctAffecte (BigDecimal mtFnctAffecte);
+    BudgetDetail findByMtFnctAffecte(BigDecimal mtFnctAffecte);
 
-    BudgetDetail findByMtInvAffecte (BigDecimal mtInvAffecte);
+    BudgetDetail findByMtInvAffecte(BigDecimal mtInvAffecte);
 
-    BudgetDetail findByMtCreditOuvInv (BigDecimal mtCreditOuvInv);
+    BudgetDetail findByMtCreditOuvInv(BigDecimal mtCreditOuvInv);
 
-    BudgetDetail findByMtCreditOuvFnct (BigDecimal mtCreditOuvFnct);
+    BudgetDetail findByMtCreditOuvFnct(BigDecimal mtCreditOuvFnct);
 
-    BudgetDetail findByMtInvReelAndMtInvPaye (BigDecimal mtInvReel, BigDecimal mtInvPaye);
+    BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
-    int deleteByMtInvReserveReliquat (BigDecimal mtInvReserveReliquat);
+    int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
 
-    int deleteByMtInvPayeReliquat (BigDecimal mtInvPayeReliquat);
+    int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
 
-    BudgetDetail save (BudgetDetail budgetDetail);
+    BudgetDetail save(BudgetDetail budgetDetail);
 
-    BudgetDetail update (BudgetDetail budgetDetail);
+    BudgetDetail update(BudgetDetail budgetDetail);
 
-    List<BudgetDetail> search (BudgetDetailVo budgetDetailVo);
+    List<BudgetDetail> search(BudgetDetailVo budgetDetailVo);
 
-    int calculerMtInvPayeReliquat (BigDecimal mtInvReel, BigDecimal mtInvPaye);
+    int calculerMtInvPayeReliquat(BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
-    int calculerMtInvReserveReliquat (BigDecimal mtInvReel, BigDecimal mtInvReserve, BigDecimal mtInvPaye);
+    int calculerMtInvReserveReliquat(BigDecimal mtInvReel, BigDecimal mtInvReserve, BigDecimal mtInvPaye);
 
-    List<BudgetDetail> findAll () ;
+    List<BudgetDetail> findAll();
 }

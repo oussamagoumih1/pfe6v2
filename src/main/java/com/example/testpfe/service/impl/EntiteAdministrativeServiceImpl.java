@@ -18,7 +18,6 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
     private EntityManager entityManager;
 
 
-
     @Override
     public EntiteAdministrative findByCode(String code) {
         return entiteAdministrativeDao.findByCode(code);
@@ -36,8 +35,8 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
 
     @Override
     public EntiteAdministrative save(EntiteAdministrative entiteAdministrative) {
-        if (findByLibelle(entiteAdministrative.getLibelle())== null)
-        entiteAdministrativeDao.save(entiteAdministrative);
+        if (findByLibelle(entiteAdministrative.getLibelle()) == null)
+            entiteAdministrativeDao.save(entiteAdministrative);
         return entiteAdministrative;
     }
 
@@ -54,12 +53,12 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
 
     @Override
     public List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo) {
-        String q =  "select ea from EntiteAdministrative ea where 1=1";
-        if(entiteAdministrativeVo.getCode()!=null){
-            q += " And ea.code LIKE '%" + entiteAdministrativeVo.getCode()+"%'";
+        String q = "select ea from EntiteAdministrative ea where 1=1";
+        if (entiteAdministrativeVo.getCode() != null) {
+            q += " And ea.code LIKE '%" + entiteAdministrativeVo.getCode() + "%'";
         }
-        if(entiteAdministrativeVo.getLibelle()!=null){
-            q += " And b.libelle = '%" + entiteAdministrativeVo.getLibelle()+"%'";
+        if (entiteAdministrativeVo.getLibelle() != null) {
+            q += " And b.libelle = '%" + entiteAdministrativeVo.getLibelle() + "%'";
         }
 
         return entityManager.createQuery(q).getResultList();

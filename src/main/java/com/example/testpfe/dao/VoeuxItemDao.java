@@ -12,12 +12,20 @@ import java.util.List;
 public interface VoeuxItemDao extends JpaRepository<VoeuxItem, Long> {
 
     List<VoeuxItem> findByProduit(Produit produit);
+
     VoeuxItem findByQteDemande(BigDecimal qteDemande);
+
     VoeuxItem findByQteAccorde(BigDecimal qteAccorde);
+
     VoeuxItem findByQteCommande(BigDecimal qteCommande);
+
     VoeuxItem findByQteReceptionne(BigDecimal qteReceptionne);
+
     VoeuxItem findByQteLivre(BigDecimal qteLivre);
+
     List<VoeuxItem> findByVoeuxReference(String reference);
+
     int deleteByQteCommande(BigDecimal qteCommande);
+
     int deleteByQteLivre(BigDecimal qteLivre);
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/EntiteAdministrative")
+@RequestMapping("/pfe/entite-administrative")
 public class EntiteAdministrativeProvidedRest {
     @Autowired
     private EntiteAdministrativeService entiteAdministrativeService;
@@ -25,7 +25,7 @@ public class EntiteAdministrativeProvidedRest {
     }
 
     @GetMapping("/code/{code}/libelle/{libelle}")
-    public EntiteAdministrative findByCodeAndLibelle(@PathVariable String code,@PathVariable String libelle) {
+    public EntiteAdministrative findByCodeAndLibelle(@PathVariable String code, @PathVariable String libelle) {
         return entiteAdministrativeService.findByCodeAndLibelle(code, libelle);
     }
 

@@ -10,13 +10,13 @@ import java.util.List;
 @Repository
 public interface EntiteAdministrativeDao extends JpaRepository<EntiteAdministrative, Long> {
 
-    EntiteAdministrative findByCode (String code);
+    EntiteAdministrative findByCode(String code);
 
-    EntiteAdministrative findByLibelle (String libelle);
+    EntiteAdministrative findByLibelle(String libelle);
 
-    EntiteAdministrative findByCodeAndLibelle (String code, String libelle);
+    EntiteAdministrative findByCodeAndLibelle(String code, String libelle);
 
-    int deleteByLibelle (String libelle);
+    int deleteByLibelle(String libelle);
 
 
 }

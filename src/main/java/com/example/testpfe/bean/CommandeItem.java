@@ -1,25 +1,24 @@
 package com.example.testpfe.bean;
 
 
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 
 public class CommandeItem {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@ManyToOne
-	private Produit produit;
-	private BigDecimal qteCommandee;
-	private BigDecimal prix;
-	private BigDecimal qteLivree;
-	@ManyToOne
-	private Commande commande;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @ManyToOne
+    private Produit produit;
+    private BigDecimal qteCommandee;
+    private BigDecimal prix;
+    private BigDecimal qteLivree;
+    @ManyToOne
+    private Commande commande;
 
-	
+
     public CommandeItem() {
     }
 

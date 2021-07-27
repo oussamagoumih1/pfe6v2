@@ -1,7 +1,6 @@
 package com.example.testpfe.bean;
 
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,37 +9,37 @@ import javax.persistence.Id;
 @Entity
 
 public class EntiteAdministrative {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	private String code;
-	private String libelle;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public EntiteAdministrative() {
-	}
+    private String code;
+    private String libelle;
 
-	public Long getId() {
-		return id;
-	}
+    public EntiteAdministrative() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public String getLibelle() {
-		return libelle;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
 }

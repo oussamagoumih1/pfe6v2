@@ -11,18 +11,18 @@ import java.util.List;
 @Repository
 public interface BudgetEntiteAdministrativeDao extends JpaRepository<BudgetEntiteAdministrative, Long> {
 
-    BudgetEntiteAdministrative findByBudgetDetail (String budgetDetail);
+    BudgetEntiteAdministrative findByBudgetDetail(String budgetDetail);
 
-    BudgetEntiteAdministrative findByBudget (String budget);
+    BudgetEntiteAdministrative findByBudget(String budget);
 
-    BudgetEntiteAdministrative findByEntiteAdministrative (String entiteAdministrative);
+    BudgetEntiteAdministrative findByEntiteAdministrative(String entiteAdministrative);
 
-    List<BudgetEntiteAdministrative> findByEntiteAdministrativeLibelle (String libelle);
+    List<BudgetEntiteAdministrative> findByEntiteAdministrativeLibelle(String libelle);
 
-    List<BudgetEntiteAdministrative> findByBudgetAnnee (Integer annee);
-    
-    int deleteByEntiteAdministrativeLibelle (String libelle);
+    List<BudgetEntiteAdministrative> findByBudgetAnnee(Integer annee);
 
-    int deleteByBudgetAnnee (Integer annee);
-    
+    int deleteByEntiteAdministrativeLibelle(String libelle);
+
+    int deleteByBudgetAnnee(Integer annee);
+
 }

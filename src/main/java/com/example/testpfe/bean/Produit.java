@@ -1,19 +1,18 @@
 package com.example.testpfe.bean;
 
 
-
 import javax.persistence.*;
 
 @Entity
 
 public class Produit {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String ref;
-	
-	@ManyToOne
-	private ProduitCategorie produitCategorie;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String ref;
+
+    @ManyToOne
+    private ProduitCategorie produitCategorie;
 
     public Produit() {
     }

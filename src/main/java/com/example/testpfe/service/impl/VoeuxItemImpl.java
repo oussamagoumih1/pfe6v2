@@ -13,18 +13,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class VoeuxItemImpl implements VoeuxItemService {
-@Autowired
-private VoeuxItemDao voeuxItemDao;
+public class    VoeuxItemImpl implements VoeuxItemService {
+    @Autowired
+    private VoeuxItemDao voeuxItemDao;
 
-@Autowired
-private EntityManager entityManager;
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public VoeuxItem save(VoeuxItem voeuxItem) {
-        if (findByQteCommande(voeuxItem.getQteCommande())==null)
+        if (findByQteCommande(voeuxItem.getQteCommande()) == null)
             voeuxItemDao.save(voeuxItem);
-        return  voeuxItem;
+        return voeuxItem;
     }
 
     @Override
@@ -80,7 +80,7 @@ private EntityManager entityManager;
     @Override
     public List<VoeuxItem> search(VoeuxItemVo voeuxItemVo) {
         String q = "select vi from VoeuxItem vi where 1=1";
-        if (voeuxItemVo.getId() != null)  {
+        if (voeuxItemVo.getId() != null) {
             q += " And vi.id LIKE '%" + voeuxItemVo.getId() + "%'";
         }
         if (voeuxItemVo.getQteCommandeMin() != null) {
@@ -107,9 +107,9 @@ private EntityManager entityManager;
     @Override
     public int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre) {
         VoeuxItem voeuxItem = voeuxItemDao.findByQteCommande(qteCommande);
-        if (voeuxItem == null){
+        if (voeuxItem == null) {
             return -1;
-        }else {
+        } else {
             BigDecimal qtExpd = voeuxItem.getQteCommande();
             qtExpd = (qteCommande.subtract(qteLivre));
             voeuxItem.setQteAccorde(qtExpd);

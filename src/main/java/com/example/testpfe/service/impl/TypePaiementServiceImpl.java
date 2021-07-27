@@ -20,7 +20,7 @@ public class TypePaiementServiceImpl implements TypePaiementService {
 
     @Override
     public TypePaiement save(TypePaiement typePaiement) {
-        if (findByRef(typePaiement.getRef())==null)
+        if (findByRef(typePaiement.getRef()) == null)
             typePaimentDao.save(typePaiement);
         return typePaiement;
     }
@@ -33,10 +33,10 @@ public class TypePaiementServiceImpl implements TypePaiementService {
     @Override
     public List<TypePaiement> search(TypePaiementVo typePaiementVo) {
         String q = "select tp from TypePaiement tp where 1=1";
-        if (typePaiementVo.getLibelle()!=null){
+        if (typePaiementVo.getLibelle() != null) {
             q += " And tp.libelle LIKE '%" + typePaiementVo.getLibelle() + "%'";
         }
-        if (typePaiementVo.getRef()!=null){
+        if (typePaiementVo.getRef() != null) {
             q += " And tp.ref LIKE '%" + typePaiementVo.getRef() + "%'";
         }
         return entityManager.createQuery(q).getResultList();

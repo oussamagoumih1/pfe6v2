@@ -19,6 +19,7 @@ public class ReceptionItem {
 
     public ReceptionItem() {
     }
+
     public Magasin getMagasin() {
         return magasin;
     }

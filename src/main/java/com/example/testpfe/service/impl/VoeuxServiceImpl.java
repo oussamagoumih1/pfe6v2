@@ -20,10 +20,9 @@ public class VoeuxServiceImpl implements VoeuxService {
     private EntityManager entityManager;
 
 
-
     @Override
     public Voeux save(Voeux voeux) {
-        if (findByReference(voeux.getReference()) ==null)
+        if (findByReference(voeux.getReference()) == null)
             voeuxDao.save(voeux);
         return voeux;
     }
@@ -71,7 +70,6 @@ public class VoeuxServiceImpl implements VoeuxService {
     }
 
 
-
     @Override
     public List<Voeux> findByVoeuxItemsProduit(Produit produit) {
         return voeuxDao.findByVoeuxItemsProduit(produit);
@@ -80,13 +78,13 @@ public class VoeuxServiceImpl implements VoeuxService {
     @Override
     public List<Voeux> search(VoeuxVo voeuxVo) {
         String q = "select v from Voeux v where 1=1";
-        if (voeuxVo.getReference() != null){
+        if (voeuxVo.getReference() != null) {
             q += " And v.reference LIKE '%" + voeuxVo.getReference() + "%'";
         }
-        if (voeuxVo.getDescription() != null){
+        if (voeuxVo.getDescription() != null) {
             q += " And v.description LIKE '%" + voeuxVo.getDescription() + "%'";
         }
-return entityManager.createQuery(q).getResultList();
+        return entityManager.createQuery(q).getResultList();
     }
 
     @Override

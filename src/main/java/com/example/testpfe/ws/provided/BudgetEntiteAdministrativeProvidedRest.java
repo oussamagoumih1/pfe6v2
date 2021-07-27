@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/testpfe/BudgetEntiteAdministrative")
+@RequestMapping("/testpfe/budget-entite-administrative")
 public class BudgetEntiteAdministrativeProvidedRest {
     @Autowired
     private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;
@@ -52,7 +52,7 @@ public class BudgetEntiteAdministrativeProvidedRest {
     }
 
     @PostMapping("/entiteAdministrativeLibelle/{libelleEntiteAdministrative}")
-    public BudgetEntiteAdministrative save(@RequestBody BudgetEntiteAdministrative budgetEntiteAdministrative,@PathVariable String libelleEntiteAdministrative) {
+    public BudgetEntiteAdministrative save(@RequestBody BudgetEntiteAdministrative budgetEntiteAdministrative, @PathVariable String libelleEntiteAdministrative) {
         return budgetEntiteAdministrativeService.save(budgetEntiteAdministrative, libelleEntiteAdministrative);
     }
 

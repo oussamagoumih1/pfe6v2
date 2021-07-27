@@ -11,13 +11,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/testpfe/BudgetDetail")
+@RequestMapping("/testpfe/budget-detail")
 public class BudgetDetailProvidedRest {
     @Autowired
     private BudgetDetailService budgetDetailService;
 
     @GetMapping("/mtInvReel/{mtInvReel}/mtInvPaye/{mtInvPaye}/mtInvReserve/{mtInvReserve}")
-    public BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye,@PathVariable BigDecimal mtInvReserve) {
+    public BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(@PathVariable BigDecimal mtInvReel, @PathVariable BigDecimal mtInvPaye, @PathVariable BigDecimal mtInvReserve) {
         return budgetDetailService.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
     }
 
@@ -67,7 +67,7 @@ public class BudgetDetailProvidedRest {
     }
 
     @GetMapping("/mtInvReel/{mtInvReel}/mtInvPaye/{mtInvPaye}")
-    public BudgetDetail findByMtInvReelAndMtInvPaye(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye) {
+    public BudgetDetail findByMtInvReelAndMtInvPaye(@PathVariable BigDecimal mtInvReel, @PathVariable BigDecimal mtInvPaye) {
         return budgetDetailService.findByMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
     }
 
@@ -90,7 +90,8 @@ public class BudgetDetailProvidedRest {
     public BudgetDetail update(@RequestBody BudgetDetail budgetDetail) {
         return budgetDetailService.update(budgetDetail);
     }
-@PostMapping("/search")
+
+    @PostMapping("/search")
     public List<BudgetDetail> search(@RequestBody BudgetDetailVo budgetDetailVo) {
         return budgetDetailService.search(budgetDetailVo);
     }
@@ -101,12 +102,12 @@ public class BudgetDetailProvidedRest {
     }
 
     @PutMapping("/mtInvReel/{mtInvReel}/mtInvPaye/{mtInvPaye}")
-    public int calculerMtInvPayeReliquat(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvPaye) {
+    public int calculerMtInvPayeReliquat(@PathVariable BigDecimal mtInvReel, @PathVariable BigDecimal mtInvPaye) {
         return budgetDetailService.calculerMtInvPayeReliquat(mtInvReel, mtInvPaye);
     }
 
     @PutMapping("/mtInvReel/{mtInvReel}/mtInvReserve/{mtInvReserve}/mtInvPaye/{mtInvPaye}")
-    public int calculerMtInvReserveReliquat(@PathVariable BigDecimal mtInvReel,@PathVariable BigDecimal mtInvReserve,@PathVariable BigDecimal mtInvPaye) {
+    public int calculerMtInvReserveReliquat(@PathVariable BigDecimal mtInvReel, @PathVariable BigDecimal mtInvReserve, @PathVariable BigDecimal mtInvPaye) {
         return budgetDetailService.calculerMtInvReserveReliquat(mtInvReel, mtInvReserve, mtInvPaye);
     }
 }

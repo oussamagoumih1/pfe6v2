@@ -72,15 +72,15 @@ public class BudgetEntiteAdministrativeServiceImpl implements BudgetEntiteAdmini
 
     @Override
     public List<BudgetEntiteAdministrative> search(BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo) {
-        String q =  "select bea from BudgetEntiteAdministrative bea where 1=1";
-        if(budgetEntiteAdministrativeVo.getBudget()!=null){
-            q += " And bea.budget LIKE '%" + budgetEntiteAdministrativeVo.getBudget()+"%'";
+        String q = "select bea from BudgetEntiteAdministrative bea where 1=1";
+        if (budgetEntiteAdministrativeVo.getBudget() != null) {
+            q += " And bea.budget LIKE '%" + budgetEntiteAdministrativeVo.getBudget() + "%'";
         }
-        if(budgetEntiteAdministrativeVo.getEntiteAdministrative()!=null){
-            q += " And bea.entiteAdministrative = '%" + budgetEntiteAdministrativeVo.getEntiteAdministrative()+"%'";
+        if (budgetEntiteAdministrativeVo.getEntiteAdministrative() != null) {
+            q += " And bea.entiteAdministrative = '%" + budgetEntiteAdministrativeVo.getEntiteAdministrative() + "%'";
         }
-        if(budgetEntiteAdministrativeVo.getBudgetDetail()!=null){
-            q += " And bea.budgetDetail = '%" + budgetEntiteAdministrativeVo.getBudgetDetail()+"%'";
+        if (budgetEntiteAdministrativeVo.getBudgetDetail() != null) {
+            q += " And bea.budgetDetail = '%" + budgetEntiteAdministrativeVo.getBudgetDetail() + "%'";
         }
         return entityManager.createQuery(q).getResultList();
     }

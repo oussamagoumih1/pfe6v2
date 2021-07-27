@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/Budget")
+@RequestMapping("/pfe/budget")
 public class BudgetProvidedRest {
     @Autowired
     private BudgetService budgetService;

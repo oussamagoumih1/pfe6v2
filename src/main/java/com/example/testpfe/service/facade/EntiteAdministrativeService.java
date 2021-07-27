@@ -8,20 +8,20 @@ import java.util.List;
 
 public interface EntiteAdministrativeService {
 
-    EntiteAdministrative findByCode (String code);
+    EntiteAdministrative findByCode(String code);
 
-    EntiteAdministrative findByLibelle (String libelle);
+    EntiteAdministrative findByLibelle(String libelle);
 
-    EntiteAdministrative findByCodeAndLibelle (String code, String libelle);
+    EntiteAdministrative findByCodeAndLibelle(String code, String libelle);
 
-    EntiteAdministrative save (EntiteAdministrative entiteAdministrative);
+    EntiteAdministrative save(EntiteAdministrative entiteAdministrative);
 
-    EntiteAdministrative update (EntiteAdministrative entiteAdministrative);
+    EntiteAdministrative update(EntiteAdministrative entiteAdministrative);
 
-    int deleteByLibelle (String libelle);
+    int deleteByLibelle(String libelle);
 
-    List<EntiteAdministrative> search (EntiteAdministrativeVo entiteAdministrativeVo);
+    List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo);
 
-    List<EntiteAdministrative> findAll () ;
+    List<EntiteAdministrative> findAll();
 
 }

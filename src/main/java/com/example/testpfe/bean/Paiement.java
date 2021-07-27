@@ -14,10 +14,11 @@ public class Paiement {
     private Date datePaiement;
     @ManyToOne
     private TypePaiement typePaiement;
-    
+
     @ManyToOne
     private Commande commande;
- public Paiement() {
+
+    public Paiement() {
     }
 
     public Paiement(Long id, String reference, BigDecimal montant, Date datePaiement, TypePaiement typePaiement, Commande commande) {

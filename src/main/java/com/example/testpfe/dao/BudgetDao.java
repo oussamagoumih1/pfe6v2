@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface BudgetDao extends JpaRepository<Budget, Long> {
 
-    Budget findByBudgetDetail (String budgetDetail);
+    Budget findByBudgetDetail(String budgetDetail);
 
     Budget findByDescription(String description);
 
-    List<Budget> findByAnnee (Integer annee);
+    List<Budget> findByAnnee(Integer annee);
 
     int deleteByAnnee(Integer annee);
 

@@ -21,8 +21,8 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public Budget save(Budget budget) {
-        if (findByAnnee(budget.getAnnee())==null)
-        budgetDao.save(budget);
+        if (findByAnnee(budget.getAnnee()) == null)
+            budgetDao.save(budget);
         return budget;
     }
 
@@ -55,15 +55,15 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public List<Budget> search(BudgetVo budgetVo) {
-        String q =  "select b from Budget b where 1=1";
-        if(budgetVo.getAnnee()!=null){
-            q += " And b.annee LIKE '%" + budgetVo.getAnnee()+"%'";
+        String q = "select b from Budget b where 1=1";
+        if (budgetVo.getAnnee() != null) {
+            q += " And b.annee LIKE '%" + budgetVo.getAnnee() + "%'";
         }
-        if(budgetVo.getDescription()!=null){
-            q += " And b.description = '%" + budgetVo.getDescription()+"%'";
+        if (budgetVo.getDescription() != null) {
+            q += " And b.description = '%" + budgetVo.getDescription() + "%'";
         }
-        if(budgetVo.getBudgetDetail()!=null){
-            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail()+"%'";
+        if (budgetVo.getBudgetDetail() != null) {
+            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail() + "%'";
         }
         return entityManager.createQuery(q).getResultList();
     }

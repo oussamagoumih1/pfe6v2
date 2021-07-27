@@ -9,20 +9,20 @@ import java.util.List;
 
 public interface BudgetService {
 
-    Budget save (Budget budget);
+    Budget save(Budget budget);
 
-    Budget update (Budget budget);
+    Budget update(Budget budget);
 
-    int deleteByAnnee (Integer annee);
+    int deleteByAnnee(Integer annee);
 
-    Budget findByBudgetDetail (String budgetDetail);
+    Budget findByBudgetDetail(String budgetDetail);
 
     Budget findByDescription(String description);
 
-    List<Budget> findByAnnee (Integer annee);
+    List<Budget> findByAnnee(Integer annee);
 
-    List<Budget> search (BudgetVo budgetVo);
+    List<Budget> search(BudgetVo budgetVo);
 
-    List<Budget> findAll () ;
+    List<Budget> findAll();
 
 }
