@@ -1,33 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.testpfe.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ *
+ * @author admin
+ */
 @Entity
-public class Paiement {
+public class Paiement implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
+    private String type;
     private BigDecimal montant;
     private Date datePaiement;
-    @ManyToOne
-    private TypePaiement typePaiement;
-
+    
     @ManyToOne
     private Commande commande;
 
-    public Paiement() {
-    }
+    @ManyToOne
+    private TypePaiement typePaiement;
 
-    public Paiement(Long id, String reference, BigDecimal montant, Date datePaiement, TypePaiement typePaiement, Commande commande) {
-        this.id = id;
-        this.reference = reference;
-        this.montant = montant;
-        this.datePaiement = datePaiement;
-        this.typePaiement = typePaiement;
-        this.commande = commande;
+    public Paiement() {
     }
 
     public Long getId() {
@@ -46,6 +50,14 @@ public class Paiement {
         this.reference = reference;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public BigDecimal getMontant() {
         return montant;
     }
@@ -62,6 +74,14 @@ public class Paiement {
         this.datePaiement = datePaiement;
     }
 
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
     public TypePaiement getTypePaiement() {
         return typePaiement;
     }
@@ -70,12 +90,6 @@ public class Paiement {
         this.typePaiement = typePaiement;
     }
 
-    public Commande getCommande() {
-        return commande;
-    }
-
-    public void setCommande(Commande commande) {
-        this.commande = commande;
-    }
+    
 
 }

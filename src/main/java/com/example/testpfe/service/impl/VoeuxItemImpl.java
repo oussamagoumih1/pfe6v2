@@ -37,6 +37,7 @@ public class    VoeuxItemImpl implements VoeuxItemService {
         return voeuxItemDao.findByProduit(produit);
     }
 
+
     @Override
     public VoeuxItem findByQteDemande(BigDecimal qteDemande) {
         return voeuxItemDao.findByQteDemande(qteDemande);

@@ -1,37 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.testpfe.bean;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ *
+ * @author admin
+ */
 @Entity
+public class Commande implements Serializable {
 
-public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    private String description;
-    private BigDecimal total;
-    private BigDecimal totalPaye;
-    @ManyToOne
-    private Budget budget;
-    @ManyToOne
-    private EtatComande etatComande;
-    @ManyToOne
-    private Fournisseur fournisseur;
+	private String description;
+	private BigDecimal total;
+	private BigDecimal totalPaye;
+	@ManyToOne
+	private  Budget budget;
+	@ManyToOne
+	private EtatComande etatComande;
+	@ManyToOne
+	private Fournisseur fournisseur;
 
-    @OneToMany(mappedBy = "commande")
-    private List<CommandeItem> commandeItems;
-
-    public Budget getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Budget budget) {
-        this.budget = budget;
-    }
+	@OneToMany(mappedBy = "commande")
+	private List<CommandeItem> commandeItems;
 
     public Commande() {
     }
@@ -76,6 +77,14 @@ public class Commande {
         this.totalPaye = totalPaye;
     }
 
+    public Budget getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Budget budget) {
+        this.budget = budget;
+    }
+
     public EtatComande getEtatComande() {
         return etatComande;
     }
@@ -99,4 +108,10 @@ public class Commande {
     public void setCommandeItems(List<CommandeItem> commandeItems) {
         this.commandeItems = commandeItems;
     }
+
+
+        
+        
+   
+
 }

@@ -3,7 +3,6 @@ package com.example.testpfe.Vo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.Voeux;
 
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class VoeuxItemVo {

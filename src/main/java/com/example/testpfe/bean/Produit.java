@@ -1,26 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.testpfe.bean;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 
+/**
+ *
+ * @author admin
+ */
 @Entity
+public class Produit implements Serializable {
 
-public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
+    private String ctgPro;
 
     @ManyToOne
     private ProduitCategorie produitCategorie;
 
     public Produit() {
-    }
-
-    public Produit(Long id, String ref, ProduitCategorie produitCategorie) {
-        this.id = id;
-        this.ref = ref;
-        this.produitCategorie = produitCategorie;
     }
 
     public Long getId() {
@@ -39,6 +43,14 @@ public class Produit {
         this.ref = ref;
     }
 
+    public String getCtgPro() {
+        return ctgPro;
+    }
+
+    public void setCtgPro(String ctgPro) {
+        this.ctgPro = ctgPro;
+    }
+
     public ProduitCategorie getProduitCategorie() {
         return produitCategorie;
     }
@@ -46,4 +58,5 @@ public class Produit {
     public void setProduitCategorie(ProduitCategorie produitCategorie) {
         this.produitCategorie = produitCategorie;
     }
+
 }

@@ -1,35 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.testpfe.bean;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ *
+ * @author admin
+ */
 @Entity
+public class CommandeItem implements Serializable {
+@Id 
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+private String ref;
+	private BigDecimal qteCommandee;
+	private BigDecimal prix;
+	private BigDecimal qteLivree;
+@ManyToOne
+private Commande commande;
 
-public class CommandeItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @ManyToOne
-    private Produit produit;
-    private BigDecimal qteCommandee;
-    private BigDecimal prix;
-    private BigDecimal qteLivree;
-    @ManyToOne
-    private Commande commande;
-
-
-    public CommandeItem() {
-    }
-
-    public CommandeItem(Long id, Produit produit, BigDecimal qteCommandee, BigDecimal prix, BigDecimal qteLivree, Commande commande) {
-        this.id = id;
-        this.produit = produit;
-        this.qteCommandee = qteCommandee;
-        this.prix = prix;
-        this.qteLivree = qteLivree;
-        this.commande = commande;
-    }
+@ManyToOne
+private Produit produit;
 
     public Long getId() {
         return id;
@@ -39,12 +36,12 @@ public class CommandeItem {
         this.id = id;
     }
 
-    public Produit getProduit() {
-        return produit;
+    public String getRef() {
+        return ref;
     }
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setRef(String ref) {
+        this.ref = ref;
     }
 
     public BigDecimal getQteCommandee() {
@@ -78,4 +75,22 @@ public class CommandeItem {
     public void setCommande(Commande commande) {
         this.commande = commande;
     }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+    
+
+
+
+
+
+    
+
 }
+
