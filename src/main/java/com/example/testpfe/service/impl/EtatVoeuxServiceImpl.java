@@ -1,9 +1,9 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.Vo.EtatVoeuxVo;
-import com.example.testpfe.bean.EtatVoeux;
 import com.example.testpfe.dao.EtatVoeuxDao;
 import com.example.testpfe.service.facade.EtatVoeuxService;
+import com.example.testpfe.vo.EtatVoeuxVo;
+import com.example.testpfe.bean.EtatVoeux;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +18,11 @@ public class EtatVoeuxServiceImpl implements EtatVoeuxService {
 
     @Autowired
     private EntityManager entityManager;
-
     @Override
     public EtatVoeux save(EtatVoeux etatVoeux) {
-        if (findByLibelle(etatVoeux.getLibelle()) == null)
-            etatVoeuxDao.save(etatVoeux);
-        return etatVoeux;
+   if(findByLibelle(etatVoeux.getLibelle()) == null)
+       etatVoeuxDao.save(etatVoeux);
+   return etatVoeux;
     }
 
     @Override
@@ -49,13 +48,13 @@ public class EtatVoeuxServiceImpl implements EtatVoeuxService {
     @Override
     public List<EtatVoeux> search(EtatVoeuxVo etatVoeuxVo) {
         String q = "select ev from EtatVoeux ev where 1=1";
-        if (etatVoeuxVo.getLibelle() != null) {
+        if (etatVoeuxVo.getLibelle()!=null){
             q += " And ev.libelle LIKE '%" + etatVoeuxVo.getLibelle() + "%'";
         }
-        if (etatVoeuxVo.getCode() != null) {
+        if (etatVoeuxVo.getCode()!=null){
             q += " And ev.code = '%" + etatVoeuxVo.getCode() + "%'";
         }
-        return entityManager.createQuery(q).getResultList();
+        return  entityManager.createQuery(q).getResultList();
     }
 
     @Override

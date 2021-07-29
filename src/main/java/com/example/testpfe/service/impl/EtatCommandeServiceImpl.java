@@ -1,9 +1,9 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.Vo.EtatComandeVo;
-import com.example.testpfe.bean.EtatComande;
 import com.example.testpfe.dao.EtatComandeDao;
 import com.example.testpfe.service.facade.EtatCommandeService;
+import com.example.testpfe.vo.EtatComandeVo;
+import com.example.testpfe.bean.EtatComande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class EtatCommandeServiceImpl implements EtatCommandeService {
 
     @Override
     public EtatComande save(EtatComande etatComande) {
-        if (findByLibelle(etatComande.getLibelle()) == null)
+        if (findByLibelle(etatComande.getLibelle())==null)
             etatComandeDao.save(etatComande);
         return etatComande;
     }
@@ -34,13 +34,13 @@ public class EtatCommandeServiceImpl implements EtatCommandeService {
     @Override
     public List<EtatComande> search(EtatComandeVo etatComandeVo) {
         String q = "select ec from EtatComande ec where 1=1";
-        if (etatComandeVo.getLibelle() != null) {
+        if (etatComandeVo.getLibelle()!=null){
             q += " And ec.libelle LIKE '%" + etatComandeVo.getLibelle() + "%'";
         }
-        if (etatComandeVo.getCode() != null) {
+        if (etatComandeVo.getCode()!=null){
             q += " And ec.code LIKE '%" + etatComandeVo.getCode() + "%'";
         }
-        return entityManager.createQuery(q).getResultList();
+        return  entityManager.createQuery(q).getResultList();
     }
 
     @Override

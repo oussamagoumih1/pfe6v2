@@ -1,7 +1,7 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.Vo.EtatVoeuxVo;
 import com.example.testpfe.bean.EtatVoeux;
+import com.example.testpfe.vo.EtatVoeuxVo;
 
 import java.util.List;
 

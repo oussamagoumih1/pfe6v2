@@ -1,9 +1,9 @@
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.Vo.VoeuxVo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.Voeux;
 import com.example.testpfe.service.facade.VoeuxService;
+import com.example.testpfe.vo.VoeuxVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

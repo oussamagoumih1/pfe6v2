@@ -1,10 +1,8 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface BudgetEntiteAdministrativeService {
@@ -27,8 +25,7 @@ public interface BudgetEntiteAdministrativeService {
 
     BudgetEntiteAdministrative update(BudgetEntiteAdministrative budgetEntiteAdministrative);
 
-    List<BudgetEntiteAdministrative> search(BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo);
-
     List<BudgetEntiteAdministrative> findAll();
 
+    List<BudgetEntiteAdministrative> search(BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo);
 }

@@ -1,8 +1,8 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.Vo.VoeuxVo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.Voeux;
+import com.example.testpfe.vo.VoeuxVo;
 
 import java.util.List;
 

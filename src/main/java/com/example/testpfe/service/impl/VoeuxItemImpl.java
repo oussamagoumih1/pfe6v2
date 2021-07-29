@@ -1,10 +1,10 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.Vo.VoeuxItemVo;
-import com.example.testpfe.bean.Produit;
-import com.example.testpfe.bean.VoeuxItem;
 import com.example.testpfe.dao.VoeuxItemDao;
 import com.example.testpfe.service.facade.VoeuxItemService;
+import com.example.testpfe.vo.VoeuxItemVo;
+import com.example.testpfe.bean.Produit;
+import com.example.testpfe.bean.VoeuxItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +13,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class    VoeuxItemImpl implements VoeuxItemService {
-    @Autowired
-    private VoeuxItemDao voeuxItemDao;
+public class VoeuxItemImpl implements VoeuxItemService {
+@Autowired
+private VoeuxItemDao voeuxItemDao;
 
-    @Autowired
-    private EntityManager entityManager;
+@Autowired
+private EntityManager entityManager;
 
     @Override
     public VoeuxItem save(VoeuxItem voeuxItem) {
-        if (findByQteCommande(voeuxItem.getQteCommande()) == null)
+        if (findByQteCommande(voeuxItem.getQteCommande())==null)
             voeuxItemDao.save(voeuxItem);
-        return voeuxItem;
+        return  voeuxItem;
     }
 
     @Override
@@ -36,7 +36,6 @@ public class    VoeuxItemImpl implements VoeuxItemService {
     public List<VoeuxItem> findByProduit(Produit produit) {
         return voeuxItemDao.findByProduit(produit);
     }
-
 
     @Override
     public VoeuxItem findByQteDemande(BigDecimal qteDemande) {
@@ -81,7 +80,7 @@ public class    VoeuxItemImpl implements VoeuxItemService {
     @Override
     public List<VoeuxItem> search(VoeuxItemVo voeuxItemVo) {
         String q = "select vi from VoeuxItem vi where 1=1";
-        if (voeuxItemVo.getId() != null) {
+        if (voeuxItemVo.getId() != null)  {
             q += " And vi.id LIKE '%" + voeuxItemVo.getId() + "%'";
         }
         if (voeuxItemVo.getQteCommandeMin() != null) {
@@ -108,9 +107,9 @@ public class    VoeuxItemImpl implements VoeuxItemService {
     @Override
     public int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre) {
         VoeuxItem voeuxItem = voeuxItemDao.findByQteCommande(qteCommande);
-        if (voeuxItem == null) {
+        if (voeuxItem == null){
             return -1;
-        } else {
+        }else {
             BigDecimal qtExpd = voeuxItem.getQteCommande();
             qtExpd = (qteCommande.subtract(qteLivre));
             voeuxItem.setQteAccorde(qtExpd);

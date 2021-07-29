@@ -3,6 +3,8 @@ package com.example.testpfe.vo;
 public class BudgetVo {
     private Long id;
     private Integer annee;
+    private Integer anneeMin;
+    private Integer anneeMax;
     private String description;
     private BudgetDetailVo budgetDetail;
 
@@ -23,6 +25,22 @@ public class BudgetVo {
 
     public void setAnnee(Integer annee) {
         this.annee = annee;
+    }
+
+    public Integer getAnneeMin() {
+        return anneeMin;
+    }
+
+    public void setAnneeMin(Integer anneeMin) {
+        this.anneeMin = anneeMin;
+    }
+
+    public Integer getAnneeMax() {
+        return anneeMax;
+    }
+
+    public void setAnneeMax(Integer anneeMax) {
+        this.anneeMax = anneeMax;
     }
 
     public String getDescription() {

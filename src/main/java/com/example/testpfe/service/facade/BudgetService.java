@@ -1,10 +1,8 @@
 package com.example.testpfe.service.facade;
 
 import com.example.testpfe.bean.Budget;
-import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.vo.BudgetVo;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface BudgetService {

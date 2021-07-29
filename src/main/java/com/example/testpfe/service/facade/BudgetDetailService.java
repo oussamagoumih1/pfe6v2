@@ -1,7 +1,6 @@
 package com.example.testpfe.service.facade;
 
 import com.example.testpfe.bean.BudgetDetail;
-import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.vo.BudgetDetailVo;
 
 import java.math.BigDecimal;

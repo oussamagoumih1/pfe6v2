@@ -1,8 +1,8 @@
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.Vo.EtatVoeuxVo;
 import com.example.testpfe.bean.EtatVoeux;
 import com.example.testpfe.service.facade.EtatVoeuxService;
+import com.example.testpfe.vo.EtatVoeuxVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

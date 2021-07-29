@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -21,8 +19,8 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public Budget save(Budget budget) {
-        if (findByAnnee(budget.getAnnee()) == null)
-            budgetDao.save(budget);
+        if (findByAnnee(budget.getAnnee())==null)
+        budgetDao.save(budget);
         return budget;
     }
 
@@ -55,15 +53,18 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public List<Budget> search(BudgetVo budgetVo) {
-        String q = "select b from Budget b where 1=1";
-        if (budgetVo.getAnnee() != null) {
-            q += " And b.annee LIKE '%" + budgetVo.getAnnee() + "%'";
+        String q =  "select b from Budget b where 1=1";
+        if(budgetVo.getDescription()!=null){
+            q += " And b.description LIKE '%" + budgetVo.getDescription()+"%'";
         }
-        if (budgetVo.getDescription() != null) {
-            q += " And b.description = '%" + budgetVo.getDescription() + "%'";
+        if(budgetVo.getAnneeMin()!=null){
+            q += " And b.annee >= '%" + budgetVo.getAnneeMin()+"%'";
         }
-        if (budgetVo.getBudgetDetail() != null) {
-            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail() + "%'";
+        if(budgetVo.getAnneeMax()!=null){
+            q += " And b.annee <= '%" + budgetVo.getAnneeMax()+"%'";
+        }
+        if(budgetVo.getBudgetDetail()!=null){
+            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail()+"%'";
         }
         return entityManager.createQuery(q).getResultList();
     }

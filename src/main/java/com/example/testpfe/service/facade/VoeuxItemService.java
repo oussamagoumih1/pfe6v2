@@ -1,8 +1,8 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.Vo.VoeuxItemVo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.VoeuxItem;
+import com.example.testpfe.vo.VoeuxItemVo;
 
 import java.math.BigDecimal;
 import java.util.List;

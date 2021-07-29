@@ -1,6 +1,5 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.bean.EntiteAdministrative;
 import com.example.testpfe.vo.EntiteAdministrativeVo;
 
