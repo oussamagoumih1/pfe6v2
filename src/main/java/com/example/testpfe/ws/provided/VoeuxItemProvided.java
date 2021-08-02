@@ -83,7 +83,7 @@ public class VoeuxItemProvided {
     }
 
     @PutMapping("/qteCommande/{qteCommande}/qteLivre/{qteLivre}")
-    public int qteExpd(@PathVariable BigDecimal qteCommande, BigDecimal qteLivre) {
-        return voeuxItemService.qteExpd(qteCommande, qteLivre);
+    public int qteLivre(@PathVariable BigDecimal qteCommande, BigDecimal qteReceptionne) {
+        return voeuxItemService.qteLivre(qteCommande, qteReceptionne);
     }
 }

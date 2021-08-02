@@ -105,14 +105,14 @@ private EntityManager entityManager;
     }
 
     @Override
-    public int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre) {
+    public int qteLivre(BigDecimal qteCommande, BigDecimal qteReceptionne) {
         VoeuxItem voeuxItem = voeuxItemDao.findByQteCommande(qteCommande);
         if (voeuxItem == null){
             return -1;
         }else {
-            BigDecimal qtExpd = voeuxItem.getQteCommande();
-            qtExpd = (qteCommande.subtract(qteLivre));
-            voeuxItem.setQteAccorde(qtExpd);
+            BigDecimal qteLivre = voeuxItem.getQteCommande();
+            qteLivre = (qteCommande.subtract(qteReceptionne));
+            voeuxItem.setQteAccorde(qteLivre);
             return 1;
         }
     }

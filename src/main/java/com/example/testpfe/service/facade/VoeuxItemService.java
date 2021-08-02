@@ -34,6 +34,5 @@ public interface VoeuxItemService {
 
     List<VoeuxItem> findAll();
 
-    int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre);
-
+    public int qteLivre(BigDecimal qteCommande, BigDecimal qteReceptionne);
 }

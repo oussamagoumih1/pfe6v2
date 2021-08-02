@@ -42,7 +42,6 @@ public class ProduitServiceImpl implements ProduitService {
             return -2;
         } else {
 
-            String ctg = produitCategorie.getReference();
             produit.setProduitCategorie(produitCategorie);
             produitDao.save(produit);
 
