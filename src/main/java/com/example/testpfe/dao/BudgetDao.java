@@ -19,5 +19,8 @@ public interface BudgetDao extends JpaRepository<Budget, Long> {
 
     int deleteByAnnee(Integer annee);
 
+    Budget findByBudgetDetailMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+
+
 
 }

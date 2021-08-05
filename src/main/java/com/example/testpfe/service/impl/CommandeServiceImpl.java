@@ -49,7 +49,7 @@ public class CommandeServiceImpl implements CommandeService {
     private void calculerTotal(Commande commande, List<CommandeItem> commandeItems) {
         BigDecimal total = BigDecimal.valueOf(0);
         for (CommandeItem commandeItem : commandeItems) {
-            total = commandeItem.getPrix().multiply(commandeItem.getQteCommandee());
+            total = total.add(commandeItem.getPrix().multiply(commandeItem.getQteCommandee())) ;
         }
         commande.setTotal(total);
     }

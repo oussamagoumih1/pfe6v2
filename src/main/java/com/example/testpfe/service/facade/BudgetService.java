@@ -3,11 +3,12 @@ package com.example.testpfe.service.facade;
 import com.example.testpfe.bean.Budget;
 import com.example.testpfe.vo.BudgetVo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface BudgetService {
 
-    Budget save(Budget budget);
+    Object save(Budget budget, BigDecimal mtInvPayeReliquat);
 
     Budget update(Budget budget);
 
@@ -23,4 +24,5 @@ public interface BudgetService {
 
     List<Budget> findAll();
 
+    Budget findByBudgetDetailMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
 }
