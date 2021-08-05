@@ -23,23 +23,23 @@ public class BudgetServiceImpl implements BudgetService {
     private EntityManager entityManager;
 
     @Override
-    public Object save(Budget budget, BigDecimal mtInvPayeReliquat) {
+    public int save(Budget budget, BigDecimal mtInvPayeReliquat) {
         BudgetDetail budgetDetail = budgetDetailService.findByMtInvPayeReliquat(mtInvPayeReliquat);
         if (budgetDetail == null) return -1;
-        List<Budget> budgets = budgetDao.findByAnnee(budget.getAnnee());
-        if (budgets != null) return -2;
+        Budget b = budgetDao.findByAnnee(budget.getAnnee());
+        if (b != null) return -2;
+        BigDecimal somme = (budgetDetail.getMtInvPaye().add(b.getMt()));
+        BigDecimal mtTotal = (budgetDetail.getMtInvAffecte().add(budgetDetail.getMtFnctAffecte()));
+
+        if (somme.compareTo(mtTotal) > 0)
+            return -3;
         else {
-            BigDecimal mt = BigDecimal.valueOf(0);
-            Budget budget1 = budgetDao.findByBudgetDetailMtInvPayeReliquat(mtInvPayeReliquat);
-            for (Budget myBudget : budgets) {
-                mt = mt.add(myBudget.getBudgetDetail().getMtInvReel().subtract(myBudget.getBudgetDetail().getMtInvPaye()));
-                mt = mt.add(budget.getBudgetDetail().getMtInvReel().subtract(myBudget.getBudgetDetail().getMtInvPaye()));
-            }
-            budgetDetail.setMtInvPayeReliquat(mt);
+            budgetDetail.setMtInvPaye(somme);
             budgetDetailService.save(budgetDetail);
             budget.setBudgetDetail(budgetDetail);
             budgetDao.save(budget);
             return 1;
+
         }
     }
 
@@ -66,25 +66,25 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public List<Budget> findByAnnee(Integer annee) {
+    public Budget findByAnnee(Integer annee) {
         return budgetDao.findByAnnee(annee);
     }
 
 
     @Override
     public List<Budget> search(BudgetVo budgetVo) {
-        String q =  "select b from Budget b where 1=1";
-        if(budgetVo.getDescription()!=null){
-            q += " And b.description LIKE '%" + budgetVo.getDescription()+"%'";
+        String q = "select b from Budget b where 1=1";
+        if (budgetVo.getDescription() != null) {
+            q += " And b.description LIKE '%" + budgetVo.getDescription() + "%'";
         }
-        if(budgetVo.getAnneeMin()!=null){
-            q += " And b.annee >= '%" + budgetVo.getAnneeMin()+"%'";
+        if (budgetVo.getAnneeMin() != null) {
+            q += " And b.annee >= '%" + budgetVo.getAnneeMin() + "%'";
         }
-        if(budgetVo.getAnneeMax()!=null){
-            q += " And b.annee <= '%" + budgetVo.getAnneeMax()+"%'";
+        if (budgetVo.getAnneeMax() != null) {
+            q += " And b.annee <= '%" + budgetVo.getAnneeMax() + "%'";
         }
-        if(budgetVo.getBudgetDetail()!=null){
-            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail()+"%'";
+        if (budgetVo.getBudgetDetail() != null) {
+            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail() + "%'";
         }
         return entityManager.createQuery(q).getResultList();
     }
@@ -94,9 +94,30 @@ public class BudgetServiceImpl implements BudgetService {
         return budgetDao.findAll();
     }
 
+
     @Override
-    public Budget findByBudgetDetailMtInvPayeReliquat(BigDecimal mtInvPayeReliquat) {
-        return budgetDao.findByBudgetDetailMtInvPayeReliquat(mtInvPayeReliquat);
+    public Budget findByMtTotal(BigDecimal mtTotal) {
+        return budgetDao.findByMtTotal(mtTotal);
+    }
+
+    @Override
+    public Budget findByMtPaye(BigDecimal mtPaye) {
+        return budgetDao.findByMtPaye(mtPaye);
+    }
+
+    @Override
+    public Budget findByMtReserve(BigDecimal mtReserve) {
+        return budgetDao.findByMtReserve(mtReserve);
+    }
+
+    @Override
+    public Budget findByMtReste(BigDecimal mtReste) {
+        return budgetDao.findByMtReste(mtReste);
+    }
+
+    @Override
+    public Budget findByMt(BigDecimal mt) {
+        return budgetDao.findByMt(mt);
     }
 
 }

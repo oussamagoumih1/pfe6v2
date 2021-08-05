@@ -35,6 +35,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
         return budgetDetailDao.findByMtInvPaye(mtInvPaye);
     }
 
+
     @Override
     public BudgetDetail findByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat) {
         return budgetDetailDao.findByMtInvReserveReliquat(mtInvReserveReliquat);

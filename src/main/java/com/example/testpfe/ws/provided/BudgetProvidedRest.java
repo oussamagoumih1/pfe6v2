@@ -42,7 +42,7 @@ public class BudgetProvidedRest {
     }
 
     @GetMapping("/annee/{annee}")
-    public List<Budget> findByAnnee(@PathVariable Integer annee) {
+    public Budget findByAnnee(@PathVariable Integer annee) {
         return budgetService.findByAnnee(annee);
     }
 

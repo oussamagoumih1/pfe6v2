@@ -15,11 +15,19 @@ public interface BudgetDao extends JpaRepository<Budget, Long> {
 
     Budget findByDescription(String description);
 
-    List<Budget> findByAnnee(Integer annee);
+    Budget findByAnnee(Integer annee);
 
     int deleteByAnnee(Integer annee);
+    
+    Budget findByMtTotal(BigDecimal mtTotal);
 
-    Budget findByBudgetDetailMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+    Budget findByMtPaye(BigDecimal mtPaye);
+
+    Budget findByMtReserve(BigDecimal mtReserve);
+
+    Budget findByMtReste(BigDecimal mtReste);
+
+    Budget findByMt(BigDecimal mt);
 
 
 
