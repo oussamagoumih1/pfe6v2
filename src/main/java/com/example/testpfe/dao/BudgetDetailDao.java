@@ -10,17 +10,25 @@ import java.math.BigDecimal;
 @Repository
 public interface BudgetDetailDao extends JpaRepository<BudgetDetail, Long> {
 
-    BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);
+    BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte);
+
+    int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
+
+    int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+
+    BudgetDetail findByBudgetAnnee(Integer annee);
+
+    BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
     BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
+/*
+    BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);
 
-    BudgetDetail findByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
-
-    BudgetDetail findByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
-
-    BudgetDetail findByMtFnctAffecte(BigDecimal mtFnctAffecte);
+    BudgetDetail findByMtFnctReserve(BigDecimal mtFnctReserve);
 
     BudgetDetail findByMtInvAffecte(BigDecimal mtInvAffecte);
+
+    BudgetDetail findByMtFnctAffecte(BigDecimal mtFnctAffecte);
 
     BudgetDetail findByMtCreditOuvInv(BigDecimal mtCreditOuvInv);
 
@@ -30,9 +38,5 @@ public interface BudgetDetailDao extends JpaRepository<BudgetDetail, Long> {
 
     BudgetDetail findByMtInvPaye(BigDecimal mtInvPaye);
 
-    BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye);
-
-    int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
-
-    int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+    BudgetDetail findByMtFnctPaye(BigDecimal mtFnctPaye);*/
 }

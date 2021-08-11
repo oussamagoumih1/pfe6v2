@@ -17,7 +17,7 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/testpfe/paiement")
+@RequestMapping("/pfe1/paiement")
 public class PaiementProvidedRest {
 
     @Autowired

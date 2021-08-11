@@ -2,6 +2,8 @@ package com.example.testpfe.service.impl;
 
 import com.example.testpfe.bean.Budget;
 import com.example.testpfe.bean.BudgetDetail;
+import com.example.testpfe.bean.Commande;
+import com.example.testpfe.bean.CommandeItem;
 import com.example.testpfe.dao.BudgetDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
 import com.example.testpfe.service.facade.BudgetService;
@@ -23,25 +25,21 @@ public class BudgetServiceImpl implements BudgetService {
     private EntityManager entityManager;
 
     @Override
-    public int save(Budget budget, BigDecimal mtInvPayeReliquat) {
-        BudgetDetail budgetDetail = budgetDetailService.findByMtInvPayeReliquat(mtInvPayeReliquat);
-        if (budgetDetail == null) return -1;
-        Budget b = budgetDao.findByAnnee(budget.getAnnee());
-        if (b != null) return -2;
-        BigDecimal somme = (budgetDetail.getMtInvPaye().add(b.getMt()));
-        BigDecimal mtTotal = (budgetDetail.getMtInvAffecte().add(budgetDetail.getMtFnctAffecte()));
-
-        if (somme.compareTo(mtTotal) > 0)
-            return -3;
-        else {
-            budgetDetail.setMtInvPaye(somme);
-            budgetDetailService.save(budgetDetail);
-            budget.setBudgetDetail(budgetDetail);
+    public int save(Budget budget) {
+      if (findByAnnee(budget.getAnnee()) != null){
+          return -1;
+      } else {
             budgetDao.save(budget);
             return 1;
-
         }
     }
+   /* private void calculerTotal(Budget budget, List<BudgetDetail> budgetDetails) {
+        BigDecimal mtTotal = BigDecimal.valueOf(0);
+        for (BudgetDetail bd :budgetDetails) {
+            mtTotal = mtTotal.add(bd.getMtFnctAffecte().add(bd.getMtInvAffecte()));
+        }
+        budget.setMtTotal(mtTotal);
+    }*/
 
 
     @Override
@@ -92,32 +90,6 @@ public class BudgetServiceImpl implements BudgetService {
     @Override
     public List<Budget> findAll() {
         return budgetDao.findAll();
-    }
-
-
-    @Override
-    public Budget findByMtTotal(BigDecimal mtTotal) {
-        return budgetDao.findByMtTotal(mtTotal);
-    }
-
-    @Override
-    public Budget findByMtPaye(BigDecimal mtPaye) {
-        return budgetDao.findByMtPaye(mtPaye);
-    }
-
-    @Override
-    public Budget findByMtReserve(BigDecimal mtReserve) {
-        return budgetDao.findByMtReserve(mtReserve);
-    }
-
-    @Override
-    public Budget findByMtReste(BigDecimal mtReste) {
-        return budgetDao.findByMtReste(mtReste);
-    }
-
-    @Override
-    public Budget findByMt(BigDecimal mt) {
-        return budgetDao.findByMt(mt);
     }
 
 }

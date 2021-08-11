@@ -12,7 +12,7 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 @RestController
-@RequestMapping("/testpfe/budget-entite-administrative")
+@RequestMapping("/pfe1/budget-entite-administrative")
 public class BudgetEntiteAdministrativeProvidedRest {
     @Autowired
     private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;

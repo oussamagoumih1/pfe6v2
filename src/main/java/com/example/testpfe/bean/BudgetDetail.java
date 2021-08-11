@@ -1,10 +1,7 @@
 package com.example.testpfe.bean;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -18,7 +15,7 @@ public class BudgetDetail {
     // mtInvReel = 107 , mtFnctReel = 28 , mtInvPaye = 70 , mtInvReserve = 35 , mtInvReserveReliquat = 2 ( mtInvReel - mtInvReserve - mtInvPaye)
         // mtInvPayeReliquat = 37 ( mtInvReel - mtInvPaye )
     >>>>>>> branch 'master' of https://github.com/oussamagoumih1/pfe6v2/ */
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -39,6 +36,11 @@ public class BudgetDetail {
     private BigDecimal mtCreditOuvInv;
     private BigDecimal mtCreditOuvFnct;
 
+    private BigDecimal mtTotal;
+    private BigDecimal mtPaye;
+    private BigDecimal mtReserve;
+    @OneToOne
+    private Budget budget;
 
     public BudgetDetail() {
     }
@@ -161,5 +163,37 @@ public class BudgetDetail {
 
     public void setMtCreditOuvFnct(BigDecimal mtCreditOuvFnct) {
         this.mtCreditOuvFnct = mtCreditOuvFnct;
+    }
+
+    public Budget getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Budget budget) {
+        this.budget = budget;
+    }
+
+    public BigDecimal getMtTotal() {
+        return mtTotal;
+    }
+
+    public void setMtTotal(BigDecimal mtTotal) {
+        this.mtTotal = mtTotal;
+    }
+
+    public BigDecimal getMtPaye() {
+        return mtPaye;
+    }
+
+    public void setMtPaye(BigDecimal mtPaye) {
+        this.mtPaye = mtPaye;
+    }
+
+    public BigDecimal getMtReserve() {
+        return mtReserve;
+    }
+
+    public void setMtReserve(BigDecimal mtReserve) {
+        this.mtReserve = mtReserve;
     }
 }

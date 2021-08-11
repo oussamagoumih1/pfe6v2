@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/testpfe/etat-commande")
+@RequestMapping("/pfe1/etat-commande")
 
 public class EtatCommandeProvided {
     @Autowired

@@ -6,18 +6,18 @@ import com.example.testpfe.vo.BudgetVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/budget")
+@RequestMapping("/pfe1/budget")
 public class BudgetProvidedRest {
     @Autowired
     private BudgetService budgetService;
 
-    @PostMapping("/bbudgetDetailMtInvPayeReliquat/{mtInvPayeReliquat}")
-    public Object save(@RequestBody Budget budget, @PathVariable BigDecimal mtInvPayeReliquat) {
-        return budgetService.save(budget,mtInvPayeReliquat);
+    @PostMapping("/")
+    public Object save(@RequestBody Budget budget) {
+        return budgetService.save(budget);
     }
 
     @PutMapping("/")
@@ -55,6 +55,6 @@ public class BudgetProvidedRest {
     @PostMapping("/search")
     public List<Budget> search(@RequestBody BudgetVo budgetVo) {
         return budgetService.search(budgetVo);
-
     }
+
 }

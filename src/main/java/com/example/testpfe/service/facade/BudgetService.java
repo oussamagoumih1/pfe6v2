@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BudgetService {
 
-    int save(Budget budget, BigDecimal mtInvPayeReliquat);
+    int save(Budget budget);
 
     Budget update(Budget budget);
 
@@ -23,16 +23,5 @@ public interface BudgetService {
     List<Budget> search(BudgetVo budgetVo);
 
     List<Budget> findAll();
-
-
-    Budget findByMtTotal(BigDecimal mtTotal);
-
-    Budget findByMtPaye(BigDecimal mtPaye);
-
-    Budget findByMtReserve(BigDecimal mtReserve);
-
-    Budget findByMtReste(BigDecimal mtReste);
-
-    Budget findByMt(BigDecimal mt);
 
 }

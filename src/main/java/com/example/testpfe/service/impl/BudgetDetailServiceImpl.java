@@ -1,9 +1,11 @@
 package com.example.testpfe.service.impl;
 
 
+import com.example.testpfe.bean.Budget;
 import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.dao.BudgetDetailDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
+import com.example.testpfe.service.facade.BudgetService;
 import com.example.testpfe.vo.BudgetDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,59 +19,10 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     @Autowired
     private BudgetDetailDao budgetDetailDao;
     @Autowired
+    private BudgetService budgetService;
+    @Autowired
     private EntityManager entityManager;
 
-
-    @Override
-    public BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve) {
-        return budgetDetailDao.findByMtInvReserve(mtInvReserve);
-    }
-
-    @Override
-    public BudgetDetail findByMtInvReel(BigDecimal mtInvReel) {
-        return budgetDetailDao.findByMtInvReel(mtInvReel);
-    }
-
-    @Override
-    public BudgetDetail findByMtInvPaye(BigDecimal mtInvPaye) {
-        return budgetDetailDao.findByMtInvPaye(mtInvPaye);
-    }
-
-
-    @Override
-    public BudgetDetail findByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat) {
-        return budgetDetailDao.findByMtInvReserveReliquat(mtInvReserveReliquat);
-    }
-
-    @Override
-    public BudgetDetail findByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat) {
-        return budgetDetailDao.findByMtInvPayeReliquat(mtInvPayeReliquat);
-    }
-
-    @Override
-    public BudgetDetail findByMtFnctAffecte(BigDecimal mtFnctAffecte) {
-        return budgetDetailDao.findByMtFnctAffecte(mtFnctAffecte);
-    }
-
-    @Override
-    public BudgetDetail findByMtInvAffecte(BigDecimal mtInvAffecte) {
-        return budgetDetailDao.findByMtInvAffecte(mtInvAffecte);
-    }
-
-    @Override
-    public BudgetDetail findByMtCreditOuvInv(BigDecimal mtCreditOuvInv) {
-        return budgetDetailDao.findByMtCreditOuvInv(mtCreditOuvInv);
-    }
-
-    @Override
-    public BudgetDetail findByMtCreditOuvFnct(BigDecimal mtCreditOuvFnct) {
-        return budgetDetailDao.findByMtCreditOuvFnct(mtCreditOuvFnct);
-    }
-
-    @Override
-    public BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye) {
-        return budgetDetailDao.findByMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
-    }
 
     @Override
     public int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat) {
@@ -82,10 +35,19 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
     }
 
     @Override
-    public BudgetDetail save(BudgetDetail budgetDetail) {
-        if (findByMtInvPayeReliquat(budgetDetail.getMtInvPayeReliquat()) == null)
+    public BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte) {
+        return budgetDetailDao.findByMtInvAffecteAndMtFnctAffecte(mtInvAffecte, mtFnctAffecte);
+    }
+
+
+    @Override
+    public int save(BudgetDetail budgetDetail) {
+        BudgetDetail bd = budgetDetailDao.findByMtInvAffecteAndMtFnctAffecte(budgetDetail.getMtInvAffecte(), budgetDetail.getMtFnctAffecte());
+        if (bd != null) return -1;
+        else {
             budgetDetailDao.save(budgetDetail);
-        return budgetDetail;
+            return 1;
+        }
     }
 
     @Override
@@ -119,7 +81,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
         BudgetDetail budgetDetail = budgetDetailDao.findByMtInvReelAndMtInvPaye(mtInvReel, mtInvPaye);
         if (budgetDetail == null) {
             return -1;
-        } else if (budgetDetail.getMtInvPayeReliquat() .compareTo (mtInvReel.subtract(mtInvPaye)) <0) {
+        } else if (budgetDetail.getMtInvPayeReliquat().compareTo(mtInvReel.subtract(mtInvPaye)) < 0) {
             return -2;
         } else {
             BigDecimal nvMtInvPayeReliquat = budgetDetail.getMtInvPayeReliquat();
@@ -135,7 +97,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
         BudgetDetail budgetDetail = budgetDetailDao.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
         if (budgetDetail == null) {
             return -1;
-        } else if (budgetDetail.getMtInvReserveReliquat().compareTo (mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye)) <0) {
+        } else if (budgetDetail.getMtInvReserveReliquat().compareTo(mtInvReel.subtract(mtInvReserve).subtract(mtInvPaye)) < 0) {
             return -2;
         } else {
             BigDecimal nvMtInvReserveReliquat = budgetDetail.getMtInvReserveReliquat();
@@ -145,13 +107,59 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
         }
     }
 
-    @Override
-    public BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve) {
-        return budgetDetailDao.findByMtInvReelAndMtInvPayeAndMtInvReserve(mtInvReel, mtInvPaye, mtInvReserve);
-    }
 
     @Override
     public List<BudgetDetail> findAll() {
         return budgetDetailDao.findAll();
     }
+
+    @Override
+    public BudgetDetail findByBudgetAnnee(Integer annee) {
+        return budgetDetailDao.findByBudgetAnnee(annee);
+    }
+
+    @Override
+    public int save(Integer annee, BigDecimal mtInvReserve, BigDecimal mtFnctReserve, BigDecimal mtInvPaye, BigDecimal mtFnctPaye, BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte) {
+        Budget budget = budgetService.findByAnnee(annee);
+        if (budget == null) {
+            return -1;
+        } else {
+            BudgetDetail bd = new BudgetDetail();
+            bd.setBudget(budget);
+            bd.setMtInvReserve(mtInvReserve);
+            bd.setMtFnctReserve(mtFnctReserve);
+            bd.setMtInvPaye(mtInvPaye);
+            bd.setMtFnctPaye(mtFnctPaye);
+            bd.setMtInvAffecte(mtInvAffecte);
+            bd.setMtFnctAffecte(mtFnctAffecte);
+
+            BigDecimal total = bd.getMtInvAffecte().add(bd.getMtFnctAffecte());
+            bd.setMtTotal(total);
+
+            BigDecimal totalPaye = bd.getMtInvPaye().add(bd.getMtFnctPaye());
+            bd.setMtPaye(totalPaye);
+
+            BigDecimal totalReserve = bd.getMtInvReserve().add(bd.getMtFnctReserve());
+            bd.setMtReserve(totalReserve);
+
+            budgetDetailDao.save(bd);
+            return 1;
+        }
+    }
+    @Override
+    public int calculerMtTotal(Integer annne) {
+        BudgetDetail budgetDetail = findByBudgetAnnee(annne);
+        if (budgetDetail == null){
+            return -1;
+        } else if (budgetDetail.getMtTotal().compareTo(budgetDetail.getMtInvAffecte().add(budgetDetail.getMtFnctAffecte())) <0){
+            return -2;
+        }else {
+            BigDecimal nvMtTotal = budgetDetail.getMtTotal();
+            nvMtTotal = (budgetDetail.getMtInvAffecte().add(budgetDetail.getMtFnctAffecte()));
+            budgetDetail.setMtTotal(nvMtTotal);
+            return 1;
+
+        }
+    }
+
 }

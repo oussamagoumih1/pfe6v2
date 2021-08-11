@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/entite-administrative")
+@RequestMapping("/pfe1/entite-administrative")
 public class EntiteAdministrativeProvidedRest {
     @Autowired
     private EntiteAdministrativeService entiteAdministrativeService;

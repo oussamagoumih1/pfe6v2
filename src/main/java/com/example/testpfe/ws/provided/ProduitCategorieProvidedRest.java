@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/testpfe/produit-categorie")
+@RequestMapping("/pfe1/produit-categorie")
 public class ProduitCategorieProvidedRest {
     
     @Autowired 
