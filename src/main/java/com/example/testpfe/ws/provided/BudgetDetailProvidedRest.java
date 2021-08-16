@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe1/budget-detail")
+@RequestMapping("/pfe/budget-detail")
 public class BudgetDetailProvidedRest {
     @Autowired
     private BudgetDetailService budgetDetailService;
@@ -34,7 +34,7 @@ public class BudgetDetailProvidedRest {
 
     @PostMapping("/")
     public int save(@RequestBody BudgetDetail budgetDetail) {
-        return budgetDetailService.save(budgetDetail.getBudget().getAnnee(),budgetDetail.getMtInvReserve(),budgetDetail.getMtFnctReserve(),budgetDetail.getMtInvPaye(),budgetDetail.getMtFnctPaye(),budgetDetail.getMtInvAffecte(),budgetDetail.getMtFnctAffecte());
+        return budgetDetailService.save(budgetDetail);
     }
 
     @PutMapping("/")
@@ -62,13 +62,5 @@ public class BudgetDetailProvidedRest {
         return budgetDetailService.calculerMtInvReserveReliquat(mtInvReel, mtInvReserve, mtInvPaye);
     }
 
-    @GetMapping("/budget/annee/{annee}")
-    public BudgetDetail findByBudgetAnnee(@PathVariable Integer annee) {
-        return budgetDetailService.findByBudgetAnnee(annee);
-    }
-
-    @PutMapping("/budget/annee/{annee}")
-    public int calculerMtTotal(@PathVariable Integer annne) {
-        return budgetDetailService.calculerMtTotal(annne);
-    }
+    
 }

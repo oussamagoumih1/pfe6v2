@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe1/budget")
+@RequestMapping("/pfe/budget")
 public class BudgetProvidedRest {
     @Autowired
     private BudgetService budgetService;

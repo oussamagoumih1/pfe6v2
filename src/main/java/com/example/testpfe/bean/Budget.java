@@ -2,6 +2,8 @@ package com.example.testpfe.bean;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 
@@ -12,8 +14,15 @@ public class Budget {
     private Long id;
     private Integer annee;
     private String description;
+    @Column(precision = 11, scale = 2)
+    private BigDecimal mtTotal;
+    @Column(precision = 11, scale = 2)
+    private BigDecimal mtPaye;
+    @Column(precision = 11, scale = 2)
+    private BigDecimal mtReserve;
 
-
+    @OneToMany
+    private List<BudgetEntiteAdministrative> budgetEntiteAdministratives;
     @OneToOne
     private BudgetDetail budgetDetail;
 
@@ -50,5 +59,37 @@ public class Budget {
 
     public void setBudgetDetail(BudgetDetail budgetDetail) {
         this.budgetDetail = budgetDetail;
+    }
+
+    public List<BudgetEntiteAdministrative> getBudgetEntiteAdministratives() {
+        return budgetEntiteAdministratives;
+    }
+
+    public void setBudgetEntiteAdministratives(List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
+        this.budgetEntiteAdministratives = budgetEntiteAdministratives;
+    }
+
+    public BigDecimal getMtTotal() {
+        return mtTotal;
+    }
+
+    public void setMtTotal(BigDecimal mtTotal) {
+        this.mtTotal = mtTotal;
+    }
+
+    public BigDecimal getMtPaye() {
+        return mtPaye;
+    }
+
+    public void setMtPaye(BigDecimal mtPaye) {
+        this.mtPaye = mtPaye;
+    }
+
+    public BigDecimal getMtReserve() {
+        return mtReserve;
+    }
+
+    public void setMtReserve(BigDecimal mtReserve) {
+        this.mtReserve = mtReserve;
     }
 }

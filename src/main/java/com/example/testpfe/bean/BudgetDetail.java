@@ -18,29 +18,37 @@ public class BudgetDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvReel;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvAffecte;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvReserve;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvPaye;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvReserveReliquat;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtInvPayeReliquat;
 
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctReel;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctAffecte;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctReserve;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctPaye;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctReserveReliquat;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtFnctPayeReliquat;
 
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtCreditOuvInv;
+    @Column(precision = 11, scale = 2)
     private BigDecimal mtCreditOuvFnct;
 
-    private BigDecimal mtTotal;
-    private BigDecimal mtPaye;
-    private BigDecimal mtReserve;
-    @OneToOne
-    private Budget budget;
 
     public BudgetDetail() {
     }
@@ -165,35 +173,7 @@ public class BudgetDetail {
         this.mtCreditOuvFnct = mtCreditOuvFnct;
     }
 
-    public Budget getBudget() {
-        return budget;
-    }
 
-    public void setBudget(Budget budget) {
-        this.budget = budget;
-    }
 
-    public BigDecimal getMtTotal() {
-        return mtTotal;
-    }
 
-    public void setMtTotal(BigDecimal mtTotal) {
-        this.mtTotal = mtTotal;
-    }
-
-    public BigDecimal getMtPaye() {
-        return mtPaye;
-    }
-
-    public void setMtPaye(BigDecimal mtPaye) {
-        this.mtPaye = mtPaye;
-    }
-
-    public BigDecimal getMtReserve() {
-        return mtReserve;
-    }
-
-    public void setMtReserve(BigDecimal mtReserve) {
-        this.mtReserve = mtReserve;
-    }
 }

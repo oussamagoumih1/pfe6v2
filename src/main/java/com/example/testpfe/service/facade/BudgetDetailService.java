@@ -26,14 +26,15 @@ public interface BudgetDetailService {
 
     List<BudgetDetail> findAll();
 
-    BudgetDetail findByBudgetAnnee(Integer annee);
+    BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte);
+
+
+/*
 
     int save(Integer annee, BigDecimal mtInvReserve, BigDecimal mtFnctReserve, BigDecimal mtInvPaye, BigDecimal mtFnctPaye, BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte);
 
-    BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte);
+int  calculerMtTotal(Integer annne);
 
-    int  calculerMtTotal(Integer annne);
-/*
     BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);
 
     BudgetDetail findByMtFnctReserve(BigDecimal mtFnctReserve);
@@ -57,4 +58,4 @@ public interface BudgetDetailService {
     BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
 */
 
-    }
+}

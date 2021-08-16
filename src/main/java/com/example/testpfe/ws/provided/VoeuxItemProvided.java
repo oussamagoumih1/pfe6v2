@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe1/voeux-item")
+@RequestMapping("/pfe/voeux-item")
 
 public class VoeuxItemProvided {
     @Autowired

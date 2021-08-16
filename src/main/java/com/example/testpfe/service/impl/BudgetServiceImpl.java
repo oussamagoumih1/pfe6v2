@@ -1,11 +1,10 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.bean.Budget;
-import com.example.testpfe.bean.BudgetDetail;
-import com.example.testpfe.bean.Commande;
-import com.example.testpfe.bean.CommandeItem;
+import com.example.testpfe.bean.*;
+
 import com.example.testpfe.dao.BudgetDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
+import com.example.testpfe.service.facade.BudgetEntiteAdministrativeService;
 import com.example.testpfe.service.facade.BudgetService;
 import com.example.testpfe.vo.BudgetVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,25 +21,71 @@ public class BudgetServiceImpl implements BudgetService {
     @Autowired
     private BudgetDetailService budgetDetailService;
     @Autowired
+    private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;
+    @Autowired
     private EntityManager entityManager;
 
     @Override
     public int save(Budget budget) {
       if (findByAnnee(budget.getAnnee()) != null){
           return -1;
+      } else if (budget.getMtTotal().compareTo(budget.getMtPaye())  <0) {
+          return -2;
       } else {
+          calculerTotal(budget, budget.getBudgetEntiteAdministratives());
             budgetDao.save(budget);
+          budgetEntiteAdministrativeService.save(budget, budget.getBudgetEntiteAdministratives());
             return 1;
         }
     }
-   /* private void calculerTotal(Budget budget, List<BudgetDetail> budgetDetails) {
+
+    private void calculerTotal(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
         BigDecimal mtTotal = BigDecimal.valueOf(0);
-        for (BudgetDetail bd :budgetDetails) {
-            mtTotal = mtTotal.add(bd.getMtFnctAffecte().add(bd.getMtInvAffecte()));
+        for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
+            mtTotal = mtTotal.add(budgetEntiteAdministrative.getBudgetDetail().getMtInvAffecte().add(budgetEntiteAdministrative.getBudgetDetail().getMtFnctAffecte()));
         }
         budget.setMtTotal(mtTotal);
-    }*/
+    }
+    private void calculerTotalPaye(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
+        BigDecimal mtPaye = BigDecimal.valueOf(0);
+        for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
+            mtPaye = mtPaye.add(budgetEntiteAdministrative.getBudgetDetail().getMtInvPaye().add(budgetEntiteAdministrative.getBudgetDetail().getMtFnctPaye()));
+        }
+        budget.setMtTotal(mtPaye);
+    }
+    private void calculerTotalReserve(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
+        BigDecimal mtReserve = BigDecimal.valueOf(0);
+        for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
+            mtReserve = mtReserve.add(budgetEntiteAdministrative.getBudgetDetail().getMtInvReserve().add(budgetEntiteAdministrative.getBudgetDetail().getMtFnctReserve()));
+        }
+        budget.setMtTotal(mtReserve);
+    }
+    private void calculerTotalReste(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
+        BigDecimal mtReste = BigDecimal.valueOf(0);
+        for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
+            mtReste = mtReste.add(budgetEntiteAdministrative.getBudgetDetail().getMtInvAffecte().add(budgetEntiteAdministrative.getBudgetDetail().getMtFnctAffecte())).subtract(budgetEntiteAdministrative.getBudgetDetail().getMtInvPaye().add(budgetEntiteAdministrative.getBudgetDetail().getMtFnctPaye()));
+        }
+        budget.setMtTotal(mtReste);
+    }
 
+
+    @Override
+    public List<Budget> search(BudgetVo budgetVo) {
+        String q = "select b from Budget b where 1=1";
+        if (budgetVo.getDescription() != null) {
+            q += " And b.description LIKE '%" + budgetVo.getDescription() + "%'";
+        }
+        if (budgetVo.getAnneeMin() != null) {
+            q += " And b.annee >= '%" + budgetVo.getAnneeMin() + "%'";
+        }
+        if (budgetVo.getAnneeMax() != null) {
+            q += " And b.annee <= '%" + budgetVo.getAnneeMax() + "%'";
+        }
+        if (budgetVo.getBudgetDetail() != null) {
+            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail() + "%'";
+        }
+        return entityManager.createQuery(q).getResultList();
+    }
 
     @Override
     public Budget update(Budget budget) {
@@ -70,26 +115,18 @@ public class BudgetServiceImpl implements BudgetService {
 
 
     @Override
-    public List<Budget> search(BudgetVo budgetVo) {
-        String q = "select b from Budget b where 1=1";
-        if (budgetVo.getDescription() != null) {
-            q += " And b.description LIKE '%" + budgetVo.getDescription() + "%'";
-        }
-        if (budgetVo.getAnneeMin() != null) {
-            q += " And b.annee >= '%" + budgetVo.getAnneeMin() + "%'";
-        }
-        if (budgetVo.getAnneeMax() != null) {
-            q += " And b.annee <= '%" + budgetVo.getAnneeMax() + "%'";
-        }
-        if (budgetVo.getBudgetDetail() != null) {
-            q += " And b.budgetDetail = '%" + budgetVo.getBudgetDetail() + "%'";
-        }
-        return entityManager.createQuery(q).getResultList();
-    }
-
-    @Override
     public List<Budget> findAll() {
         return budgetDao.findAll();
     }
+
+
+    /* private void calculerTotal(Budget budget, List<BudgetDetail> budgetDetails) {
+        BigDecimal mtTotal = BigDecimal.valueOf(0);
+        for (BudgetDetail bd :budgetDetails) {
+            mtTotal = mtTotal.add(bd.getMtFnctAffecte().add(bd.getMtInvAffecte()));
+        }
+        budget.setMtTotal(mtTotal);
+    }*/
+
 
 }

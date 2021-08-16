@@ -1,9 +1,9 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.bean.BudgetEntiteAdministrative;
-import com.example.testpfe.bean.EntiteAdministrative;
+import com.example.testpfe.bean.*;
 import com.example.testpfe.dao.BudgetEntiteAdministrativeDao;
 import com.example.testpfe.service.facade.BudgetEntiteAdministrativeService;
+import com.example.testpfe.service.facade.BudgetService;
 import com.example.testpfe.service.facade.EntiteAdministrativeService;
 import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,24 +18,12 @@ public class BudgetEntiteAdministrativeServiceImpl implements BudgetEntiteAdmini
     @Autowired
     private BudgetEntiteAdministrativeDao budgetEntiteAdministrativeDao;
     @Autowired
+    private BudgetService budgetService;
+    @Autowired
     private EntiteAdministrativeService entiteAdministrativeService;
     @Autowired
     private EntityManager entityManager;
 
-    @Override
-    public BudgetEntiteAdministrative findByBudgetDetail(String budgetDetail) {
-        return budgetEntiteAdministrativeDao.findByBudgetDetail(budgetDetail);
-    }
-
-    @Override
-    public BudgetEntiteAdministrative findByBudget(String budget) {
-        return budgetEntiteAdministrativeDao.findByBudget(budget);
-    }
-
-    @Override
-    public BudgetEntiteAdministrative findByEntiteAdministrative(String entiteAdministrative) {
-        return budgetEntiteAdministrativeDao.findByEntiteAdministrative(entiteAdministrative);
-    }
 
     @Override
     public List<BudgetEntiteAdministrative> findByEntiteAdministrativeLibelle(String libelle) {
@@ -58,11 +46,15 @@ public class BudgetEntiteAdministrativeServiceImpl implements BudgetEntiteAdmini
     }
 
     @Override
-    public BudgetEntiteAdministrative save(BudgetEntiteAdministrative budgetEntiteAdministrative, String libelleEntiteAdministrative) {
-        EntiteAdministrative entiteAdministrative = entiteAdministrativeService.findByLibelle(libelleEntiteAdministrative);
-        if (entiteAdministrative == null)
-            budgetEntiteAdministrativeDao.save(budgetEntiteAdministrative);
-        return budgetEntiteAdministrative;
+    public int save(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives ) {
+        for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
+            Budget budget1 = budgetService.findByAnnee(budgetEntiteAdministrative.getBudget().getAnnee());
+            if (budget1 != null) {
+                budgetEntiteAdministrativeDao.save(budgetEntiteAdministrative);
+            }
+        }
+        return 1;
+
     }
 
     @Override

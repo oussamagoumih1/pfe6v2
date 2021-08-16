@@ -16,12 +16,11 @@ public interface BudgetDetailDao extends JpaRepository<BudgetDetail, Long> {
 
     int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
 
-    BudgetDetail findByBudgetAnnee(Integer annee);
-
     BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
     BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
 /*
+
     BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);
 
     BudgetDetail findByMtFnctReserve(BigDecimal mtFnctReserve);

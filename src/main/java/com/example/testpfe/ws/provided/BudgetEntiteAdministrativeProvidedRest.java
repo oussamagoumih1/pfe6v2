@@ -1,6 +1,7 @@
 package com.example.testpfe.ws.provided;
 
 
+import com.example.testpfe.bean.Budget;
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.service.facade.BudgetEntiteAdministrativeService;
 import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
@@ -10,26 +11,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@SuppressWarnings("ALL")
+
 @RestController
-@RequestMapping("/pfe1/budget-entite-administrative")
+@RequestMapping("/pfe/budget-entite-administrative")
 public class BudgetEntiteAdministrativeProvidedRest {
     @Autowired
     private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;
 
-    @GetMapping("/budgetDetail/{budgetDetail}")
-    public BudgetEntiteAdministrative findByBudgetDetail(@PathVariable String budgetDetail) {
-        return budgetEntiteAdministrativeService.findByBudgetDetail(budgetDetail);
+
+    @PostMapping("/search")
+    public List<BudgetEntiteAdministrative> search(@RequestBody BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo) {
+        return budgetEntiteAdministrativeService.search(budgetEntiteAdministrativeVo);
     }
 
-    @GetMapping("/budget/{budget}")
-    public BudgetEntiteAdministrative findByBudget(@PathVariable String budget) {
-        return budgetEntiteAdministrativeService.findByBudget(budget);
-    }
-
-    @GetMapping("/entiteAdministrative/{entiteAdministrative}")
-    public BudgetEntiteAdministrative findByEntiteAdministrative(@PathVariable String entiteAdministrative) {
-        return budgetEntiteAdministrativeService.findByEntiteAdministrative(entiteAdministrative);
+    @GetMapping("/")
+    public List<BudgetEntiteAdministrative> findAll() {
+        return budgetEntiteAdministrativeService.findAll();
     }
 
     @GetMapping("/entiteAdministrativeLibelle/{libelle}")
@@ -41,6 +38,8 @@ public class BudgetEntiteAdministrativeProvidedRest {
     public List<BudgetEntiteAdministrative> findByBudgetAnnee(@PathVariable Integer annee) {
         return budgetEntiteAdministrativeService.findByBudgetAnnee(annee);
     }
+/*
+
 
     @DeleteMapping("/entiteAdministrativeLibelle/{libelle}")
     public int deleteByEntiteAdministrativeLibelle(@PathVariable String libelle) {
@@ -53,22 +52,12 @@ public class BudgetEntiteAdministrativeProvidedRest {
     }
 
     @PostMapping("/entiteAdministrativeLibelle/{libelleEntiteAdministrative}")
-    public BudgetEntiteAdministrative save(@RequestBody BudgetEntiteAdministrative budgetEntiteAdministrative, @PathVariable String libelleEntiteAdministrative) {
-        return budgetEntiteAdministrativeService.save(budgetEntiteAdministrative, libelleEntiteAdministrative);
+    public int save(@RequestBody Budget budget, @PathVariable  List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
+        return budgetEntiteAdministrativeService.save(budget, budgetEntiteAdministratives);
     }
 
-    /*@PutMapping("/")
+    @PutMapping("/")
     public BudgetEntiteAdministrative update(@RequestBody BudgetEntiteAdministrative budgetEntiteAdministrative) {
         return budgetEntiteAdministrativeService.update(budgetEntiteAdministrative);
     }*/
-
-    @PostMapping("/search")
-    public List<BudgetEntiteAdministrative> search(@RequestBody BudgetEntiteAdministrativeVo budgetEntiteAdministrativeVo) {
-        return budgetEntiteAdministrativeService.search(budgetEntiteAdministrativeVo);
-    }
-
-    @GetMapping("/")
-    public List<BudgetEntiteAdministrative> findAll() {
-        return budgetEntiteAdministrativeService.findAll();
-    }
 }

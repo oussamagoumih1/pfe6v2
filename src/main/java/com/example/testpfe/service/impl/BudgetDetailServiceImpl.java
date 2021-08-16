@@ -113,11 +113,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
         return budgetDetailDao.findAll();
     }
 
-    @Override
-    public BudgetDetail findByBudgetAnnee(Integer annee) {
-        return budgetDetailDao.findByBudgetAnnee(annee);
-    }
-
+    /*
     @Override
     public int save(Integer annee, BigDecimal mtInvReserve, BigDecimal mtFnctReserve, BigDecimal mtInvPaye, BigDecimal mtFnctPaye, BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte) {
         Budget budget = budgetService.findByAnnee(annee);
@@ -146,7 +142,7 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
             return 1;
         }
     }
-    @Override
+   @Override
     public int calculerMtTotal(Integer annne) {
         BudgetDetail budgetDetail = findByBudgetAnnee(annne);
         if (budgetDetail == null){
@@ -158,8 +154,10 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
             nvMtTotal = (budgetDetail.getMtInvAffecte().add(budgetDetail.getMtFnctAffecte()));
             budgetDetail.setMtTotal(nvMtTotal);
             return 1;
+}
+        }*/
 
-        }
+
     }
 
-}
+

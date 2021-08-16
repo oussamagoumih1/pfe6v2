@@ -19,7 +19,7 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe1/commande-item")
+@RequestMapping("/pfe/commande-item")
 public class CommandeItemProvidedRest {
 
     @Autowired
