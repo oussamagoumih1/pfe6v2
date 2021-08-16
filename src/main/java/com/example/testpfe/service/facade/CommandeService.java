@@ -5,15 +5,20 @@
  */
 package com.example.testpfe.service.facade;
 
+import antlr.collections.List;
+import com.example.testpfe.Vo.CommandeVo;
 import com.example.testpfe.bean.Commande;
 
-import java.util.List;
+
 
 /**
  *
  * @author admin
  */
 public interface CommandeService {
+
+    List<Commande> search(CommandeVo commandeVO);
+
 
     public Commande findByReference(String reference);
 
