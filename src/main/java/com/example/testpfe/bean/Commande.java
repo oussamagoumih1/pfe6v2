@@ -22,8 +22,10 @@ public class Commande implements Serializable {
     private Long id;
     private String reference;
 	private String description;
-	private BigDecimal total;
-	private BigDecimal totalPaye;
+    @Column(precision = 11, scale = 2)
+    private BigDecimal total;
+    @Column(precision = 11, scale = 2)
+    private BigDecimal totalPaye;
 	@ManyToOne
 	private  Budget budget;
 	@ManyToOne
