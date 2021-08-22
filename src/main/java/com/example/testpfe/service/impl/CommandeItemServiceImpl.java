@@ -31,7 +31,7 @@ public class CommandeItemServiceImpl implements CommandeItemService {
     @Override
     public int save(Commande commande, List<CommandeItem> commandeItems) {
         for (CommandeItem commandeItem : commandeItems) {
-            Produit produit = produitService.findByReference(commandeItem.getProduit().getReference());
+            Produit produit = produitService.findByRef(commandeItem.getProduit().getRef());
             commandeItem.setProduit(produit);
             if (produit != null) {
                 commandeItem.setCommande(commande);
@@ -43,22 +43,13 @@ public class CommandeItemServiceImpl implements CommandeItemService {
     }
 
     @Override
-    public int deleteMultiple(List<CommandeItem> commandeItems) {
-        int res = 0;
-        for (int i = 0; i < commandeItems.size(); i++) {
-            res += deleteByReference(commandeItems.get(i).getReference());
-        }
-        return res;
+    public CommandeItem findByRef(String reference) {
+        return commandeItemDao.findByRef(reference);
     }
 
     @Override
-    public CommandeItem findByReference(String reference) {
-        return commandeItemDao.findByReference(reference);
-    }
-
-    @Override
-    public int deleteByReference(String reference) {
-        return commandeItemDao.deleteByReference(reference);
+    public int deleteByRef(String reference) {
+        return commandeItemDao.deleteByRef(reference);
     }
 
     @Override
@@ -72,13 +63,13 @@ public class CommandeItemServiceImpl implements CommandeItemService {
     }
 
     @Override
-    public int deleteByProduitReference(String reference) {
-        return commandeItemDao.deleteByProduitReference(reference);
+    public int deleteByProduitRef(String reference) {
+        return commandeItemDao.deleteByProduitRef(reference);
     }
 
     @Override
-    public List<CommandeItem> findByProduitReference(String reference) {
-        return commandeItemDao.findByProduitReference(reference);
+    public List<CommandeItem> findByProduitRef(String reference) {
+        return commandeItemDao.findByProduitRef(reference);
     }
 
     @Override

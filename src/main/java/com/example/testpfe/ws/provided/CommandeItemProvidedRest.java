@@ -8,7 +8,9 @@ package com.example.testpfe.ws.provided;
 import com.example.testpfe.bean.CommandeItem;
 import com.example.testpfe.service.facade.CommandeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe/commande-item")
+@RequestMapping("/testpfe/commande-item")
 public class CommandeItemProvidedRest {
 
     @Autowired
@@ -27,12 +29,6 @@ public class CommandeItemProvidedRest {
     public List<CommandeItem> findAll() {
         return commandeItemService.findAll();
     }
-
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteMultiple(@RequestBody List<CommandeItem> commandeItems) {
-        return commandeItemService.deleteMultiple(commandeItems);
-    }
-
 /*
     public CommandeItem findByRef(String reference) {
         return commandeItemService.findByRef(reference);

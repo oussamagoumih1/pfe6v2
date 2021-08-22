@@ -22,14 +22,12 @@ public class Commande implements Serializable {
     private Long id;
     private String reference;
 	private String description;
-    @Column(precision = 11, scale = 2)
-    private BigDecimal total;
-    @Column(precision = 11, scale = 2)
-    private BigDecimal totalPaye;
+	private BigDecimal total;
+	private BigDecimal totalPaye;
 	@ManyToOne
 	private  Budget budget;
 	@ManyToOne
-	private EtatComande etatComande;
+	private EtatCommande etatCommande;
 	@ManyToOne
 	private Fournisseur fournisseur;
 
@@ -87,12 +85,12 @@ public class Commande implements Serializable {
         this.budget = budget;
     }
 
-    public EtatComande getEtatComande() {
-        return etatComande;
+    public EtatCommande getEtatComande() {
+        return etatCommande;
     }
 
-    public void setEtatComande(EtatComande etatComande) {
-        this.etatComande = etatComande;
+    public void setEtatComande(EtatCommande etatComande) {
+        this.etatCommande = etatComande;
     }
 
     public Fournisseur getFournisseur() {
@@ -110,4 +108,10 @@ public class Commande implements Serializable {
     public void setCommandeItems(List<CommandeItem> commandeItems) {
         this.commandeItems = commandeItems;
     }
+
+
+        
+        
+   
+
 }

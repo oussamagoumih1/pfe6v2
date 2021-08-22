@@ -16,21 +16,19 @@ import java.util.List;
  */
 public interface CommandeItemService {
 
-    public CommandeItem findByReference(String reference);
+    public CommandeItem findByRef(String reference);
 
-    public int deleteByReference(String reference);
+    public int deleteByRef(String reference);
 
     public int deleteByCommandeReference(String reference);
 
     public List<CommandeItem> findByCommandeReference(String reference);
 
-    public int deleteByProduitReference(String reference);
+    public int deleteByProduitRef(String reference);
 
-    public List<CommandeItem> findByProduitReference(String reference);
+    public List<CommandeItem> findByProduitRef(String reference);
 
     public int save(Commande commande, List<CommandeItem> commandeItems);
-
-    public int deleteMultiple(List<CommandeItem> commandeItems);
 
     List<CommandeItem> findAll();
 }

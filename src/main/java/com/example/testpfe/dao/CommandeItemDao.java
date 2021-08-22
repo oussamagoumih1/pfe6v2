@@ -18,16 +18,16 @@ import java.util.List;
 @Repository
 public interface CommandeItemDao extends JpaRepository<CommandeItem, Long> {
 
-    public CommandeItem findByReference(String reference);
+    public CommandeItem findByRef(String reference);
 
-    public int deleteByReference(String reference);
+    public int deleteByRef(String reference);
 
     public int deleteByCommandeReference(String reference);
 
     public List<CommandeItem> findByCommandeReference(String reference);
 
-    public int deleteByProduitReference(String reference);
+    public int deleteByProduitRef(String reference);
 
-    public List<CommandeItem> findByProduitReference(String reference);
+    public List<CommandeItem> findByProduitRef(String reference);
 
 }

@@ -42,7 +42,7 @@ public class PaiementServiceImpl implements PaiementService {
         Commande commande = commandeService.findByReference(paiement.getCommande().getReference());
         paiement.setCommande(commande);
 
-        TypePaiement typePaiement = typePaiementService.findByReference(paiement.getTypePaiement().getReference());
+        TypePaiement typePaiement = typePaiementService.findByRef(paiement.getTypePaiement().getRef());
         paiement.setTypePaiement(typePaiement);
 
         if (commande == null) {
@@ -54,6 +54,8 @@ public class PaiementServiceImpl implements PaiementService {
             return -4;
         } else {
             BigDecimal nvTotalPaye = commande.getTotalPaye().add(paiement.getMontant()) ;
+            String type = typePaiement.getRef();
+            paiement.setType(type);
             commande.setTotalPaye(nvTotalPaye);
             paiementDao.save(paiement);
             return 1;
@@ -73,13 +75,13 @@ public class PaiementServiceImpl implements PaiementService {
     }
 
     @Override
-    public int deleteByTypePaiementReference(String reference) {
-        return paiementDao.deleteByTypePaiementReference(reference);
+    public int deleteByTypePaiementRef(String reference) {
+        return paiementDao.deleteByTypePaiementRef(reference);
     }
 
     @Override
-    public List<Paiement> findByTypePaiementReference(String reference) {
-        return paiementDao.findByTypePaiementReference(reference);
+    public List<Paiement> findByTypePaiementRef(String reference) {
+        return paiementDao.findByTypePaiementRef(reference);
     }
 
     @Override
@@ -91,16 +93,6 @@ public class PaiementServiceImpl implements PaiementService {
     public Paiement findByReference(String refPaiement) {
         return paiementDao.findByReference(refPaiement);
     }
-
-    @Override
-    public int deleteMultiple(List<Paiement> paiements) {
-        int res = 0;
-        for (int i = 0; i < paiements.size(); i++) {
-            res += deleteByReference(paiements.get(i).getReference());
-        }
-        return res;
-    }
-
 
     @Override
     public List<Paiement> findAll() {

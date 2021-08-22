@@ -1,11 +1,12 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.Produit;
-import com.example.testpfe.bean.VoeuxItem;
-import com.example.testpfe.vo.VoeuxItemVo;
-
 import java.math.BigDecimal;
 import java.util.List;
+
+import com.example.testpfe.Vo.VoeuxItemVo;
+import com.example.testpfe.bean.Produit;
+import com.example.testpfe.bean.Voeux;
+import com.example.testpfe.bean.VoeuxItem;
 
 public interface VoeuxItemService {
     VoeuxItem save(VoeuxItem voeuxItem);
@@ -34,5 +35,7 @@ public interface VoeuxItemService {
 
     List<VoeuxItem> findAll();
 
-    public int qteLivre(BigDecimal qteCommande, BigDecimal qteReceptionne);
+    int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre);
+
+    int save(Voeux voeux, List<VoeuxItem> voeuxItems);
 }

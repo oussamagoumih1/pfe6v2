@@ -5,7 +5,6 @@
  */
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.Commande;
 import com.example.testpfe.bean.Produit;
 
 import java.util.List;
@@ -16,13 +15,11 @@ import java.util.List;
  */
 public interface ProduitService {
 
-    public Produit findByReference(String ref);
+    public Produit findByRef(String ref);
 
-    public int deleteByReference(String ref);
+    public int deleteByRef(String ref);
 
     public int save(Produit produit);
-
-    public int deleteMultiple(List<Produit> produits);
 
     List<Produit> findAll();
 }

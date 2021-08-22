@@ -1,12 +1,17 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.Budget;
-import com.example.testpfe.bean.BudgetEntiteAdministrative;
-import com.example.testpfe.vo.BudgetEntiteAdministrativeVo;
-
 import java.util.List;
 
+import com.example.testpfe.Vo.BudgetEntiteAdministrativeVo;
+import com.example.testpfe.bean.BudgetEntiteAdministrative;
+
 public interface BudgetEntiteAdministrativeService {
+
+    BudgetEntiteAdministrative findByBudgetDetail(String budgetDetail);
+
+    BudgetEntiteAdministrative findByBudget(String budget);
+
+    BudgetEntiteAdministrative findByEntiteAdministrative(String entiteAdministrative);
 
     List<BudgetEntiteAdministrative> findByEntiteAdministrativeLibelle(String libelle);
 
@@ -16,7 +21,7 @@ public interface BudgetEntiteAdministrativeService {
 
     int deleteByBudgetAnnee(Integer annee);
 
-    int save(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives);
+    BudgetEntiteAdministrative save(BudgetEntiteAdministrative budgetEntiteAdministrative, String libelleEntiteAdministrative);
 
     BudgetEntiteAdministrative update(BudgetEntiteAdministrative budgetEntiteAdministrative);
 

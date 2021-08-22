@@ -31,7 +31,7 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public int save(Produit produit) {
-        Produit loadedProduit = findByReference(produit.getReference());
+        Produit loadedProduit = findByRef(produit.getRef());
 
         ProduitCategorie produitCategorie = produitCategorieService.findByReference(produit.getProduitCategorie().getReference());
         produit.setProduitCategorie(produitCategorie);
@@ -42,6 +42,7 @@ public class ProduitServiceImpl implements ProduitService {
             return -2;
         } else {
 
+            String ctg = produitCategorie.getReference();
             produit.setProduitCategorie(produitCategorie);
             produitDao.save(produit);
 
@@ -50,21 +51,13 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public int deleteMultiple(List<Produit> produits) {
-        int res = 0;
-        for (int i = 0; i < produits.size(); i++) {
-            res += deleteByReference(produits.get(i).getReference());
-        }
-        return res;     }
-
-    @Override
-    public Produit findByReference(String ref) {
-        return produitDao.findByReference(ref);
+    public Produit findByRef(String ref) {
+        return produitDao.findByRef(ref);
     }
 
     @Override
-    public int deleteByReference(String ref) {
-        return produitDao.deleteByReference(ref);
+    public int deleteByRef(String ref) {
+        return produitDao.deleteByRef(ref);
     }
 
     @Override

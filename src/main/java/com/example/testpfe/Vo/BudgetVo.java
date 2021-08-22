@@ -1,4 +1,4 @@
-package com.example.testpfe.vo;
+package com.example.testpfe.Vo;
 
 public class BudgetVo {
     private Long id;

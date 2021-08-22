@@ -1,26 +1,23 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.Budget;
-import com.example.testpfe.vo.BudgetVo;
-
-import java.math.BigDecimal;
 import java.util.List;
+
+import com.example.testpfe.Vo.BudgetVo;
+import com.example.testpfe.bean.Budget;
 
 public interface BudgetService {
 
-    int save(Budget budget);
+    Budget save(Budget budget);
 
     Budget update(Budget budget);
 
     int deleteByAnnee(Integer annee);
 
-    int deleteByAnnee(List<Budget> budgets);
-
     Budget findByBudgetDetail(String budgetDetail);
 
     Budget findByDescription(String description);
 
-    Budget findByAnnee(Integer annee);
+    List<Budget> findByAnnee(Integer annee);
 
     List<Budget> search(BudgetVo budgetVo);
 

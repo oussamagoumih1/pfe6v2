@@ -5,29 +5,23 @@
  */
 package com.example.testpfe.ws.provided;
 
-import java.util.List;
-import com.example.testpfe.Vo.CommandeVo;
 import com.example.testpfe.bean.Commande;
 import com.example.testpfe.service.facade.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 /**
  *
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe/commande")
+@RequestMapping("/testpfe/commande")
 public class CommandeProvidedRest {
 
     @Autowired
     private CommandeService commandeService;
-
-    @PostMapping("/search/")
-    public List<Commande> search(@RequestBody CommandeVo commandeVo) {
-        return commandeService.search(commandeVo);
-    }
 
     @GetMapping("/reference/{reference}")
     public Commande findByReference(@PathVariable String reference) {
@@ -49,8 +43,4 @@ public class CommandeProvidedRest {
         return commandeService.findAll();
     }
 
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteMultiple(@RequestBody List<Commande> commandes) {
-        return commandeService.deleteMultiple(commandes);
-    }
 }

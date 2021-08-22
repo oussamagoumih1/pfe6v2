@@ -1,17 +1,25 @@
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.bean.Produit;
-import com.example.testpfe.bean.VoeuxItem;
-import com.example.testpfe.service.facade.VoeuxItemService;
-import com.example.testpfe.vo.VoeuxItemVo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.testpfe.Vo.VoeuxItemVo;
+import com.example.testpfe.bean.Produit;
+import com.example.testpfe.bean.VoeuxItem;
+import com.example.testpfe.service.facade.VoeuxItemService;
+
 @RestController
-@RequestMapping("/pfe/voeux-item")
+@RequestMapping("/testpfe/voeux-item")
 
 public class VoeuxItemProvided {
     @Autowired
@@ -83,7 +91,7 @@ public class VoeuxItemProvided {
     }
 
     @PutMapping("/qteCommande/{qteCommande}/qteLivre/{qteLivre}")
-    public int qteLivre(@PathVariable BigDecimal qteCommande, BigDecimal qteReceptionne) {
-        return voeuxItemService.qteLivre(qteCommande, qteReceptionne);
+    public int qteExpd(@PathVariable BigDecimal qteCommande, BigDecimal qteLivre) {
+        return voeuxItemService.qteExpd(qteCommande, qteLivre);
     }
 }

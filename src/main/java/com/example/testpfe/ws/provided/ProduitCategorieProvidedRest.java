@@ -18,9 +18,10 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/pfe/admin/produit-categorie")
+@RequestMapping("/testpfe/produit-categorie")
 public class ProduitCategorieProvidedRest {
-       @Autowired 
+    
+    @Autowired 
     private ProduitCategorieService produitCategorieService;
 
     @GetMapping("/reference/{reference}")
@@ -41,11 +42,6 @@ public class ProduitCategorieProvidedRest {
     @GetMapping("/")
     public List<ProduitCategorie> findAll() {
         return produitCategorieService.findAll();
-    }
-
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteMultiple(@RequestBody List<ProduitCategorie> produitCategories) {
-        return produitCategorieService.deleteMultiple(produitCategories);
     }
     
 }

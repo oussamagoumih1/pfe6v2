@@ -12,23 +12,25 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/** *
+/**
+ *
  * @author admin
- */@RestController
-@RequestMapping("/pfe/admin/type-paiement")
+ */
+@RestController
+@RequestMapping("/testpfe/type-paiement")
 public class TypePaiementProvidedRest {
     
     @Autowired
     private TypePaiementService typePaiementService;
 
-    @GetMapping("/reference/{ref}")
-    public TypePaiement findByReference(@PathVariable String ref) {
-        return typePaiementService.findByReference(ref);
+    @GetMapping("/ref/{ref}")
+    public TypePaiement findByRef(@PathVariable String ref) {
+        return typePaiementService.findByRef(ref);
     }
 
-    @DeleteMapping("/reference/{ref}")
-    public int deleteByReference(@PathVariable String ref) {
-        return typePaiementService.deleteByReference(ref);
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
+        return typePaiementService.deleteByRef(ref);
     }
 
     @PostMapping("/")
@@ -40,9 +42,5 @@ public class TypePaiementProvidedRest {
     public List<TypePaiement> findAll() {
         return typePaiementService.findAll();
     }
-
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteMultiple(@RequestBody List<TypePaiement> typePaiements) {
-        return typePaiementService.deleteMultiple(typePaiements);
-    }
+    
 }

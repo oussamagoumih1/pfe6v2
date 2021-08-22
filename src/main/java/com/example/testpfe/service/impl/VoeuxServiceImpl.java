@@ -1,15 +1,18 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.dao.VoeuxDao;
-import com.example.testpfe.service.facade.VoeuxService;
-import com.example.testpfe.vo.VoeuxVo;
-import com.example.testpfe.bean.Produit;
-import com.example.testpfe.bean.Voeux;
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import com.example.testpfe.bean.*;
+import com.example.testpfe.service.facade.VoeuxItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import java.util.List;
+import com.example.testpfe.Vo.VoeuxVo;
+import com.example.testpfe.dao.VoeuxDao;
+import com.example.testpfe.service.facade.VoeuxService;
 
 @Service
 public class VoeuxServiceImpl implements VoeuxService {
@@ -18,14 +21,30 @@ public class VoeuxServiceImpl implements VoeuxService {
     private VoeuxDao voeuxDao;
     @Autowired
     private EntityManager entityManager;
-
+@Autowired
+private VoeuxItemService voeuxItemService;
 
 
     @Override
-    public Voeux save(Voeux voeux) {
+    public int save(Voeux voeux) {
+
         if (findByReference(voeux.getReference()) ==null)
+            return -1;
+        else {
+          //  calculerlivre(voeux, voeux.getVoeuxItems());
             voeuxDao.save(voeux);
-        return voeux;
+            voeuxItemService.save(voeux, voeux.getVoeuxItems());
+            return 1;
+        }
+    }
+
+
+
+    private void calculerlivre(Voeux voeux, List<VoeuxItem> voeuxItems) {
+        BigDecimal livre = BigDecimal.valueOf(0);
+        for (VoeuxItem voeuxItem : voeuxItems) {
+            livre = voeuxItem.getQteReceptionne().subtract(voeuxItem.getQteLivre());
+        }
     }
 
     @Override

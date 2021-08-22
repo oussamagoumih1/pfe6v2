@@ -1,14 +1,20 @@
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.bean.Budget;
-import com.example.testpfe.bean.BudgetDetail;
-import com.example.testpfe.service.facade.BudgetService;
-import com.example.testpfe.vo.BudgetVo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.testpfe.Vo.BudgetVo;
+import com.example.testpfe.bean.Budget;
+import com.example.testpfe.service.facade.BudgetService;
 
 @RestController
 @RequestMapping("/pfe/budget")
@@ -17,7 +23,7 @@ public class BudgetProvidedRest {
     private BudgetService budgetService;
 
     @PostMapping("/")
-    public Object save(@RequestBody Budget budget) {
+    public Budget save(@RequestBody Budget budget) {
         return budgetService.save(budget);
     }
 
@@ -31,10 +37,6 @@ public class BudgetProvidedRest {
         return budgetService.deleteByAnnee(annee);
     }
 
-    @PostMapping("/delete-multiple-by-annee")
-    public int deleteByAnnee(@RequestBody List<Budget> budgets) {
-        return budgetService.deleteByAnnee(budgets);
-    }
 
     @GetMapping("/budgetDetail/{budgetDetail}")
     public Budget findByBudgetDetail(@PathVariable String budgetDetail) {
@@ -47,7 +49,7 @@ public class BudgetProvidedRest {
     }
 
     @GetMapping("/annee/{annee}")
-    public Budget findByAnnee(@PathVariable Integer annee) {
+    public List<Budget> findByAnnee(@PathVariable Integer annee) {
         return budgetService.findByAnnee(annee);
     }
 
@@ -60,6 +62,6 @@ public class BudgetProvidedRest {
     @PostMapping("/search")
     public List<Budget> search(@RequestBody BudgetVo budgetVo) {
         return budgetService.search(budgetVo);
-    }
 
+    }
 }

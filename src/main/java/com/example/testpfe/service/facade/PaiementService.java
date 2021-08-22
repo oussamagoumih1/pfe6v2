@@ -19,15 +19,13 @@ public interface PaiementService {
 
     public List<Paiement> findByCommandeReference(String reference);
 
-    public int deleteByTypePaiementReference(String reference);
+    public int deleteByTypePaiementRef(String reference);
 
-    public List<Paiement> findByTypePaiementReference(String reference);
+    public List<Paiement> findByTypePaiementRef(String reference);
 
     public int deleteByReference(String refPaiement);
 
     public Paiement findByReference(String refPaiement);
-
-    public int deleteMultiple(List<Paiement> paiements);
 
     List<Paiement> findAll();
 

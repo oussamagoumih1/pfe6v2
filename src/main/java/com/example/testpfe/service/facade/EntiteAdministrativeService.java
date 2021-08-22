@@ -1,9 +1,9 @@
 package com.example.testpfe.service.facade;
 
-import com.example.testpfe.bean.EntiteAdministrative;
-import com.example.testpfe.vo.EntiteAdministrativeVo;
-
 import java.util.List;
+
+import com.example.testpfe.Vo.EntiteAdministrativeVo;
+import com.example.testpfe.bean.EntiteAdministrative;
 
 public interface EntiteAdministrativeService {
 
@@ -18,8 +18,6 @@ public interface EntiteAdministrativeService {
     EntiteAdministrative update(EntiteAdministrative entiteAdministrative);
 
     int deleteByLibelle(String libelle);
-
-    int deleteByLibelle(List<EntiteAdministrative> entiteAdministratives);
 
     List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo);
 

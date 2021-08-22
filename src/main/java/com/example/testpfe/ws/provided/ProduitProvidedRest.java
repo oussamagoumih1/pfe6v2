@@ -18,20 +18,20 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/pfe/admin/produit")
+@RequestMapping("/testpfe/produit")
 public class ProduitProvidedRest {
     
     @Autowired
     private ProduitService produitService;
 
-    @GetMapping("/Reference/{ref}")
-    public Produit findByReference(@PathVariable String ref) {
-        return produitService.findByReference(ref);
+    @GetMapping("/ref/{ref}")
+    public Produit findByRef(@PathVariable String ref) {
+        return produitService.findByRef(ref);
     }
 
-    @DeleteMapping("/Reference/{ref}")
-    public int deleteByReference(@PathVariable String ref) {
-        return produitService.deleteByReference(ref);
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
+        return produitService.deleteByRef(ref);
     }
 
     @PostMapping("/")
@@ -42,11 +42,6 @@ public class ProduitProvidedRest {
     @GetMapping("/")
     public List<Produit> findAll() {
         return produitService.findAll();
-    }
-
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteMultiple(@RequestBody List<Produit> produits) {
-        return produitService.deleteMultiple(produits);
     }
     
 }

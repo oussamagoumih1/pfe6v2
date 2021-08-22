@@ -1,14 +1,16 @@
 package com.example.testpfe.service.impl;
 
-import com.example.testpfe.dao.EtatVoeuxDao;
-import com.example.testpfe.service.facade.EtatVoeuxService;
-import com.example.testpfe.vo.EtatVoeuxVo;
-import com.example.testpfe.bean.EtatVoeux;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import java.util.List;
+import com.example.testpfe.Vo.EtatVoeuxVo;
+import com.example.testpfe.bean.EtatVoeux;
+import com.example.testpfe.dao.EtatVoeuxDao;
+import com.example.testpfe.service.facade.EtatVoeuxService;
 
 @Service
 public class EtatVoeuxServiceImpl implements EtatVoeuxService {
