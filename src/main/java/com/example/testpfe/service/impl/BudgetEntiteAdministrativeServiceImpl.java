@@ -49,7 +49,9 @@ public class BudgetEntiteAdministrativeServiceImpl implements BudgetEntiteAdmini
     public int save(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives ) {
         for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
             Budget budget1 = budgetService.findByAnnee(budgetEntiteAdministrative.getBudget().getAnnee());
+            budgetEntiteAdministrative.setBudget(budget1);
             if (budget1 != null) {
+                budgetEntiteAdministrative.setBudget(budget);
                 budgetEntiteAdministrativeDao.save(budgetEntiteAdministrative);
             }
         }
