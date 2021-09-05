@@ -1,41 +1,67 @@
 package com.example.testpfe.bean;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+
 @Entity
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nom;
-    private String prenom;
-    private String code;
-    private String login;
-    private String password;
-    private String phone;
+
+    private boolean credentialsNonExpired;
+    private boolean enabled;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss.SSS")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss.SSS")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
     private String email;
-    private int nbrCnx = 3;
-    private boolean blocked;
-    private boolean mustChangePassword = true;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private String username;
+    private String password;
+    private boolean passwordChanged;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<com.example.testpfe.bean.Role> roles = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private List<UserRole> userRoles = new ArrayList<>();
 
-    public String getEmail() {
-        return email;
+    @Transient
+    private Collection<Role> authorities;
+
+    public User() {
+        super();
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
     }
+
+    public boolean getEnabled() {
+        return enabled;
+    }
+
+    public boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public boolean getPasswordChanged() {
+        return passwordChanged;
+    }
+
 
     public Long getId() {
         return id;
@@ -45,36 +71,85 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getCode() {
-        return code;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getLogin() {
-        return login;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<Role> getAuthorities() {
+        return authorities;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public void setAuthorities(Collection<Role> authorities) {
+        this.authorities = authorities;
     }
 
     public String getPassword() {
@@ -85,69 +160,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
+    public boolean isPasswordChanged() {
+        return passwordChanged;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public int getNbrCnx() {
-        return nbrCnx;
-    }
-
-    public void setNbrCnx(int nbrCnx) {
-        this.nbrCnx = nbrCnx;
-    }
-
-    public boolean isBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
-
-    public boolean isMustChangePassword() {
-        return mustChangePassword;
-    }
-
-    public void setMustChangePassword(boolean mustChangePassword) {
-        this.mustChangePassword = mustChangePassword;
-    }
-
-    public Set<com.example.testpfe.bean.Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<com.example.testpfe.bean.Role> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public void setPasswordChanged(boolean passwordChanged) {
+        this.passwordChanged = passwordChanged;
     }
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", code='" + code + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", nbrCnx=" + nbrCnx +
-                ", blocked=" + blocked +
-                ", mustChangePassword=" + mustChangePassword +
-                ", roles=" + roles +
-                '}';
-    }
 }
+

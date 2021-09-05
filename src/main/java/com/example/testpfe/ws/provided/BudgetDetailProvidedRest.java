@@ -1,7 +1,6 @@
 package com.example.testpfe.ws.provided;
 
 
-import com.example.testpfe.bean.Budget;
 import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.service.facade.BudgetDetailService;
 import com.example.testpfe.vo.BudgetDetailVo;
@@ -22,7 +21,12 @@ public class BudgetDetailProvidedRest {
         return budgetDetailService.findByMtInvAffecteAndMtFnctAffecte(mtInvAffecte, mtFnctAffecte);
     }
 
-    @DeleteMapping("/mtInvReserveReliquat/{mtInvReserveReliquat}")
+    @DeleteMapping("/id/{id}")
+    public void deleteById(@PathVariable Long id) {
+        budgetDetailService.deleteById(id);
+    }
+
+    @DeleteMapping("/mtInvPaye/{mtInvPaye}")
     public int deleteByMtInvReserveReliquat(@PathVariable BigDecimal mtInvReserveReliquat) {
         return budgetDetailService.deleteByMtInvReserveReliquat(mtInvReserveReliquat);
     }
@@ -30,6 +34,11 @@ public class BudgetDetailProvidedRest {
     @DeleteMapping("/mtInvPayeReliquat/{mtInvPayeReliquat}")
     public int deleteByMtInvPayeReliquat(@PathVariable BigDecimal mtInvPayeReliquat) {
         return budgetDetailService.deleteByMtInvPayeReliquat(mtInvPayeReliquat);
+    }
+
+    @PostMapping("/delete-multiple-by-mtInvReserveReliquat")
+    public int deleteByMtInvReserveReliquat(@RequestBody List<BudgetDetail> budgetDetails) {
+        return budgetDetailService.deleteByMtInvReserveReliquat(budgetDetails);
     }
 
     @PostMapping("/")

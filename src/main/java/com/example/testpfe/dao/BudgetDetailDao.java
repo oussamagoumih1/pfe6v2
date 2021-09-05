@@ -12,13 +12,14 @@ public interface BudgetDetailDao extends JpaRepository<BudgetDetail, Long> {
 
     BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte);
 
-    int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
-
     int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+
+    int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
 
     BudgetDetail findByMtInvReelAndMtInvPaye(BigDecimal mtInvReel, BigDecimal mtInvPaye);
 
     BudgetDetail findByMtInvReelAndMtInvPayeAndMtInvReserve(BigDecimal mtInvReel, BigDecimal mtInvPaye, BigDecimal mtInvReserve);
+
 /*
 
     BudgetDetail findByMtInvReserve(BigDecimal mtInvReserve);

@@ -1,41 +1,54 @@
 package com.example.testpfe.bean;
 
-import com.example.testpfe.service.util.Roles;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-public class Role implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Role implements GrantedAuthority {
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private Roles name;
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long id;
 
-    public Role() {
+     @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss.SSS")
+     @Temporal(TemporalType.TIMESTAMP)
+     private Date updatedAt ;
+     private String authority ;
+     @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss.SSS")
+     @Temporal(TemporalType.TIMESTAMP)
+     private Date createdAt ;
 
-    }
 
-    public Role(Roles name) {
-        this.name = name;
-    }
+     public Role(){
+       super();
+     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Roles getName() {
-        return name;
-    }
-
-    public void setName(Roles name) {
-        this.name = name;
-    }
+     public Long getId(){
+          return this.id;
+     }
+     public void setId(Long id){
+          this.id = id;
+     }
+     public String getAuthority(){
+          return this.authority;
+     }
+     public void setAuthority(String authority){
+          this.authority = authority;
+     }
+     public Date getCreatedAt(){
+          return this.createdAt;
+     }
+     public void setCreatedAt(Date createdAt){
+          this.createdAt = createdAt;
+     }
+     public Date getUpdatedAt(){
+          return this.updatedAt;
+     }
+     public void setUpdatedAt(Date updatedAt){
+          this.updatedAt = updatedAt;
+     }
 }
+

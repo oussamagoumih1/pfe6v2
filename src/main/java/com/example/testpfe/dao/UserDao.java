@@ -1,18 +1,18 @@
 package com.example.testpfe.dao;
 
+
 import com.example.testpfe.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
-public interface UserDao extends JpaRepository<User, Long> {
-    Optional<User> findByLogin(String login);
-    Optional<User> findById(Long id);
+public interface UserDao extends JpaRepository<User,Long> {
 
-    Boolean existsByLogin(String login);
+	   User findByUsername(String username);
+       int deleteByUsername(String username);
 
-    Boolean existsByEmail(String email);
+
+       User findByEmail(String email);
 
 }

@@ -19,6 +19,8 @@ public interface EntiteAdministrativeService {
 
     int deleteByLibelle(String libelle);
 
+    int deleteByLibelle(List<EntiteAdministrative> entiteAdministratives);
+
     List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo);
 
     List<EntiteAdministrative> findAll();
