@@ -70,6 +70,14 @@ public class CommandeServiceImpl implements CommandeService {
         }
     }
 
+    @Override
+    public int deleteMultiple(List<Commande> commandes) {
+        int res = 0;
+        for (int i = 0; i < commandes.size(); i++) {
+            res += deleteByReference(commandes.get(i).getReference());
+        }
+        return res;    }
+
     private void updateMtReserveBudget(Budget budget, Commande commande) {
         BigDecimal nvTotalReserve = commande.getTotal().add(budget.getMtReserve());
         budget.setMtReserve(nvTotalReserve);

@@ -49,4 +49,8 @@ public class CommandeProvidedRest {
         return commandeService.findAll();
     }
 
+    @PostMapping("/delete-multiple-by-reference")
+    public int deleteMultiple(@RequestBody List<Commande> commandes) {
+        return commandeService.deleteMultiple(commandes);
+    }
 }

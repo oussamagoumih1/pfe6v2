@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface TypePaiementService {
 
-    public TypePaiement findByRef(String ref);
+    public TypePaiement findByReference(String ref);
 
-    public int deleteByRef(String ref);
+    public int deleteByReference(String ref);
 
     public int save(TypePaiement typePaiement);
 

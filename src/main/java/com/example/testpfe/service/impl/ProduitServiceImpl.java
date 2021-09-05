@@ -31,7 +31,7 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public int save(Produit produit) {
-        Produit loadedProduit = findByRef(produit.getRef());
+        Produit loadedProduit = findByReference(produit.getReference());
 
         ProduitCategorie produitCategorie = produitCategorieService.findByReference(produit.getProduitCategorie().getReference());
         produit.setProduitCategorie(produitCategorie);
@@ -50,13 +50,13 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public Produit findByRef(String ref) {
-        return produitDao.findByRef(ref);
+    public Produit findByReference(String ref) {
+        return produitDao.findByReference(ref);
     }
 
     @Override
-    public int deleteByRef(String ref) {
-        return produitDao.deleteByRef(ref);
+    public int deleteByReference(String ref) {
+        return produitDao.deleteByReference(ref);
     }
 
     @Override

@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface ProduitDao extends JpaRepository<Produit, Long> {
 
    
-    public Produit findByRef(String ref);
+    public Produit findByReference(String ref);
 
-    public int deleteByRef(String ref);
+    public int deleteByReference(String ref);
 
 }

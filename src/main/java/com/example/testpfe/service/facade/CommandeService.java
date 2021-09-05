@@ -26,5 +26,7 @@ public interface CommandeService {
 
     public int save(Commande commande);
 
+    public int deleteMultiple(List<Commande> commandes);
+
     List<Commande> findAll();
 }

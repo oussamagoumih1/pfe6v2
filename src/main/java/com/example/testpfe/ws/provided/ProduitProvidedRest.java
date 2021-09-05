@@ -24,14 +24,14 @@ public class ProduitProvidedRest {
     @Autowired
     private ProduitService produitService;
 
-    @GetMapping("/ref/{ref}")
-    public Produit findByRef(@PathVariable String ref) {
-        return produitService.findByRef(ref);
+    @GetMapping("/Reference/{ref}")
+    public Produit findByReference(@PathVariable String ref) {
+        return produitService.findByReference(ref);
     }
 
-    @DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable String ref) {
-        return produitService.deleteByRef(ref);
+    @DeleteMapping("/Reference/{ref}")
+    public int deleteByReference(@PathVariable String ref) {
+        return produitService.deleteByReference(ref);
     }
 
     @PostMapping("/")

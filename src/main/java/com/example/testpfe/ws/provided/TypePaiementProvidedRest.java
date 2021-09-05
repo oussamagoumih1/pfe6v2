@@ -23,14 +23,14 @@ public class TypePaiementProvidedRest {
     @Autowired
     private TypePaiementService typePaiementService;
 
-    @GetMapping("/ref/{ref}")
-    public TypePaiement findByRef(@PathVariable String ref) {
-        return typePaiementService.findByRef(ref);
+    @GetMapping("/Reference/{ref}")
+    public TypePaiement findByReference(@PathVariable String ref) {
+        return typePaiementService.findByReference(ref);
     }
 
-    @DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable String ref) {
-        return typePaiementService.deleteByRef(ref);
+    @DeleteMapping("/Reference/{ref}")
+    public int deleteByReference(@PathVariable String ref) {
+        return typePaiementService.deleteByReference(ref);
     }
 
     @PostMapping("/")
