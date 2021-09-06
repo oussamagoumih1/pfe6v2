@@ -110,10 +110,4 @@ public class Commande implements Serializable {
     public void setCommandeItems(List<CommandeItem> commandeItems) {
         this.commandeItems = commandeItems;
     }
-
-
-        
-        
-   
-
 }

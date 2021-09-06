@@ -29,7 +29,7 @@ public class TypePaiement implements Serializable {
     public TypePaiement() {
     }
 
-   
+
     public Long getId() {
         return id;
     }
@@ -42,7 +42,7 @@ public class TypePaiement implements Serializable {
         return reference;
     }
 
-    public void setReference(String ref) {
+    public void setReference(String reference) {
         this.reference = reference;
     }
 
@@ -53,8 +53,4 @@ public class TypePaiement implements Serializable {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-
-   
-    
-
 }
