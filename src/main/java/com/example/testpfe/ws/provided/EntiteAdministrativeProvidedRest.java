@@ -1,5 +1,6 @@
 package com.example.testpfe.ws.provided;
 
+import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.bean.EntiteAdministrative;
 import com.example.testpfe.service.facade.EntiteAdministrativeService;
 import com.example.testpfe.vo.EntiteAdministrativeVo;
@@ -44,6 +45,10 @@ public class EntiteAdministrativeProvidedRest {
         return entiteAdministrativeService.deleteByLibelle(libelle);
     }
 
+    @PostMapping("/delete-multiple-by-libelle")
+    public int deleteByLibelle(@RequestBody List<EntiteAdministrative> entiteAdministratives) {
+        return entiteAdministrativeService.deleteByLibelle(entiteAdministratives);
+    }
 
     @PostMapping("/search")
     public List<EntiteAdministrative> search(@RequestBody EntiteAdministrativeVo entiteAdministrativeVo) {

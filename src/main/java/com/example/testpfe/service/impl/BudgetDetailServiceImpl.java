@@ -1,7 +1,6 @@
 package com.example.testpfe.service.impl;
 
 
-import com.example.testpfe.bean.Budget;
 import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.dao.BudgetDetailDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -25,14 +25,31 @@ public class BudgetDetailServiceImpl implements BudgetDetailService {
 
 
     @Override
+    public int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat) {
+        return budgetDetailDao.deleteByMtInvPayeReliquat(mtInvPayeReliquat);
+    }
+
+    @Override
     public int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat) {
         return budgetDetailDao.deleteByMtInvReserveReliquat(mtInvReserveReliquat);
     }
 
     @Override
-    public int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat) {
-        return budgetDetailDao.deleteByMtInvPayeReliquat(mtInvPayeReliquat);
+    public void deleteById(Long id) {
+     budgetDetailDao.deleteById(id);
     }
+
+    @Transactional
+    @Override
+    public int deleteByMtInvReserveReliquat(List<BudgetDetail> budgetDetails) {
+        int res=0;
+        for (int i = 0; i < budgetDetails.size(); i++) {
+            res+=deleteByMtInvPayeReliquat(budgetDetails.get(i).getMtInvPayeReliquat());
+        }
+        return res;
+    }
+
+
 
     @Override
     public BudgetDetail findByMtInvAffecteAndMtFnctAffecte(BigDecimal mtInvAffecte, BigDecimal mtFnctAffecte) {

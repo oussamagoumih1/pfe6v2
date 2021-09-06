@@ -97,6 +97,15 @@ public class BudgetServiceImpl implements BudgetService {
         return budgetDao.deleteByAnnee(annee);
     }
 
+    @Override
+    public int deleteByAnnee(List<Budget> budgets) {
+        int res=0;
+        for (int i = 0; i < budgets.size(); i++) {
+            res+=deleteByAnnee(budgets.get(i).getAnnee());
+        }
+        return res;
+    }
+
 
     @Override
     public Budget findByBudgetDetail(String budgetDetail) {

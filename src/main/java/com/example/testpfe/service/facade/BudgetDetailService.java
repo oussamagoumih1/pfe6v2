@@ -9,9 +9,13 @@ import java.util.List;
 
 public interface BudgetDetailService {
 
+    int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+
     int deleteByMtInvReserveReliquat(BigDecimal mtInvReserveReliquat);
 
-    int deleteByMtInvPayeReliquat(BigDecimal mtInvPayeReliquat);
+    void deleteById(Long id);
+
+    int deleteByMtInvReserveReliquat(List<BudgetDetail> budgetDetails);
 
 
     int save(BudgetDetail budgetDetail);

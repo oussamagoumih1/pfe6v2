@@ -14,6 +14,8 @@ public interface BudgetService {
 
     int deleteByAnnee(Integer annee);
 
+    int deleteByAnnee(List<Budget> budgets);
+
     Budget findByBudgetDetail(String budgetDetail);
 
     Budget findByDescription(String description);

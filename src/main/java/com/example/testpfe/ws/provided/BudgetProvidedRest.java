@@ -1,6 +1,7 @@
 package com.example.testpfe.ws.provided;
 
 import com.example.testpfe.bean.Budget;
+import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.service.facade.BudgetService;
 import com.example.testpfe.vo.BudgetVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class BudgetProvidedRest {
         return budgetService.deleteByAnnee(annee);
     }
 
+    @PostMapping("/delete-multiple-by-annee")
+    public int deleteByAnnee(@RequestBody List<Budget> budgets) {
+        return budgetService.deleteByAnnee(budgets);
+    }
 
     @GetMapping("/budgetDetail/{budgetDetail}")
     public Budget findByBudgetDetail(@PathVariable String budgetDetail) {
