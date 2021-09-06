@@ -54,8 +54,6 @@ public class PaiementServiceImpl implements PaiementService {
             return -4;
         } else {
             BigDecimal nvTotalPaye = commande.getTotalPaye().add(paiement.getMontant()) ;
-            String type = typePaiement.getReference();
-            paiement.setType(type);
             commande.setTotalPaye(nvTotalPaye);
             paiementDao.save(paiement);
             return 1;

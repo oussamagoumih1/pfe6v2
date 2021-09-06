@@ -5,6 +5,7 @@
  */
 package com.example.testpfe.service.facade;
 
+import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.ProduitCategorie;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public interface ProduitCategorieService {
     public int deleteByReference(String ref);
 
     public int save(ProduitCategorie produitCategorie);
+
+    public int deleteMultiple(List<ProduitCategorie> produitCategories);
 
     List<ProduitCategorie> findAll();
 }

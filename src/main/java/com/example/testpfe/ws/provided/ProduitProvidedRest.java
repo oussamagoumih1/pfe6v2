@@ -5,6 +5,7 @@
  */
 package com.example.testpfe.ws.provided;
 
+import com.example.testpfe.bean.Commande;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.service.facade.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class ProduitProvidedRest {
     @GetMapping("/")
     public List<Produit> findAll() {
         return produitService.findAll();
+    }
+
+    @PostMapping("/delete-multiple-by-reference")
+    public int deleteMultiple(@RequestBody List<Produit> produits) {
+        return produitService.deleteMultiple(produits);
     }
     
 }

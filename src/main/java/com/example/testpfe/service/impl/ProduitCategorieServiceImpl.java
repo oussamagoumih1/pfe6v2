@@ -27,6 +27,15 @@ public class ProduitCategorieServiceImpl implements ProduitCategorieService {
     }
 
     @Override
+    public int deleteMultiple(List<ProduitCategorie> produitCategories) {
+        int res = 0;
+        for (int i = 0; i < produitCategories.size(); i++) {
+            res += deleteByReference(produitCategories.get(i).getReference());
+        }
+        return res;
+    }
+
+    @Override
     public ProduitCategorie findByReference(String ref) {
         return produitCategorieDao.findByReference(ref);
     }

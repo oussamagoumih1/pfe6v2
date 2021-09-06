@@ -5,6 +5,7 @@
  */
 package com.example.testpfe.service.facade;
 
+import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.TypePaiement;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public interface TypePaiementService {
     public int deleteByReference(String ref);
 
     public int save(TypePaiement typePaiement);
+
+    public int deleteMultiple(List<TypePaiement> typePaiements);
 
     List<TypePaiement> findAll();
 }

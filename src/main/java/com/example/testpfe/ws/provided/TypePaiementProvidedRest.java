@@ -5,6 +5,7 @@
  */
 package com.example.testpfe.ws.provided;
 
+import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.TypePaiement;
 import com.example.testpfe.service.facade.TypePaiementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,9 @@ public class TypePaiementProvidedRest {
     public List<TypePaiement> findAll() {
         return typePaiementService.findAll();
     }
-    
+
+    @PostMapping("/delete-multiple-by-reference")
+    public int deleteMultiple(@RequestBody List<TypePaiement> typePaiements) {
+        return typePaiementService.deleteMultiple(typePaiements);
+    }
 }

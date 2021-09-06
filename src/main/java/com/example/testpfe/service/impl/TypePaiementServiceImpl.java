@@ -37,6 +37,14 @@ public class TypePaiementServiceImpl implements TypePaiementService {
     }
 
     @Override
+    public int deleteMultiple(List<TypePaiement> typePaiements) {
+        int res = 0;
+        for (int i = 0; i < typePaiements.size(); i++) {
+            res += deleteByReference(typePaiements.get(i).getReference());
+        }
+        return res;      }
+
+    @Override
     public TypePaiement findByReference(String ref) {
         return typePaiementDao.findByReference(ref);
     }
