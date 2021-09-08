@@ -5,7 +5,6 @@
  */
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.bean.Commande;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.service.facade.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,9 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/pfe/produit")
+@RequestMapping("/pfe/admin/produit")
 public class ProduitProvidedRest {
-    
+
     @Autowired
     private ProduitService produitService;
 
@@ -49,5 +48,5 @@ public class ProduitProvidedRest {
     public int deleteMultiple(@RequestBody List<Produit> produits) {
         return produitService.deleteMultiple(produits);
     }
-    
+
 }

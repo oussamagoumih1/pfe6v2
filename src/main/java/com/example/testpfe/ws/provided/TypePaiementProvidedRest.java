@@ -5,7 +5,6 @@
  */
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.TypePaiement;
 import com.example.testpfe.service.facade.TypePaiementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- *
+/** *
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe/type-paiement")
+@RequestMapping("/pfe/admin/type-paiement")
 public class TypePaiementProvidedRest {
-    
+
     @Autowired
     private TypePaiementService typePaiementService;
 
