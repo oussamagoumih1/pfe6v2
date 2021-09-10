@@ -21,7 +21,7 @@ public class TypePaiement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ref;
+    private String reference;
     private String libelle;
     
    
@@ -29,7 +29,7 @@ public class TypePaiement implements Serializable {
     public TypePaiement() {
     }
 
-   
+
     public Long getId() {
         return id;
     }
@@ -38,12 +38,12 @@ public class TypePaiement implements Serializable {
         this.id = id;
     }
 
-    public String getRef() {
-        return ref;
+    public String getReference() {
+        return reference;
     }
 
-    public void setRef(String ref) {
-        this.ref = ref;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public String getLibelle() {
@@ -53,8 +53,4 @@ public class TypePaiement implements Serializable {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-
-   
-    
-
 }

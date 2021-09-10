@@ -1,55 +1,47 @@
 package com.example.testpfe.ws.provided;
 
+import com.example.testpfe.bean.EtatComande;
+import com.example.testpfe.service.facade.EtatCommandeService;
+import com.example.testpfe.vo.EtatComandeVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.testpfe.Vo.EtatComandeVo;
-import com.example.testpfe.bean.EtatCommande;
-import com.example.testpfe.service.facade.EtatCommandeService;
-
 @RestController
-@RequestMapping("/testpfe/etat-commande")
+@RequestMapping("/pfe/etat-commande")
 
 public class EtatCommandeProvided {
     @Autowired
     private EtatCommandeService etatCommandeService;
 
     @PostMapping("/")
-    public EtatCommande save(@RequestBody EtatCommande etatCommande) {
-        return etatCommandeService.save(etatCommande);
+    public EtatComande save(@RequestBody EtatComande etatComande) {
+        return etatCommandeService.save(etatComande);
     }
 
     @PutMapping("/")
-    public EtatCommande update(@RequestBody EtatCommande etatCommande) {
-        return etatCommandeService.update(etatCommande);
+    public EtatComande update(@RequestBody EtatComande etatComande) {
+        return etatCommandeService.update(etatComande);
     }
 
     @PostMapping("/search")
-    public List<EtatCommande> search(@RequestBody EtatComandeVo etatComandeVo) {
+    public List<EtatComande> search(@RequestBody EtatComandeVo etatComandeVo) {
         return etatCommandeService.search(etatComandeVo);
     }
 
     @GetMapping("/")
-    public List<EtatCommande> findAll() {
+    public List<EtatComande> findAll() {
         return etatCommandeService.findAll();
     }
 
     @GetMapping("/libelle/{libelle}")
-    public EtatCommande findByLibelle(@PathVariable String libelle) {
+    public EtatComande findByLibelle(@PathVariable String libelle) {
         return etatCommandeService.findByLibelle(libelle);
     }
 
     @GetMapping("/code/{code}")
-    public EtatCommande findByCode(@PathVariable String code) {
+    public EtatComande findByCode(@PathVariable String code) {
         return etatCommandeService.findByCode(code);
     }
 

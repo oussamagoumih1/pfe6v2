@@ -15,11 +15,13 @@ import java.util.List;
  */
 public interface ProduitService {
 
-    public Produit findByRef(String ref);
+    public Produit findByReference(String ref);
 
-    public int deleteByRef(String ref);
+    public int deleteByReference(String ref);
 
     public int save(Produit produit);
+
+    public int deleteMultiple(List<Produit> produits);
 
     List<Produit> findAll();
 }

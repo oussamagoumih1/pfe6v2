@@ -18,9 +18,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TypePaiementDao extends JpaRepository<TypePaiement, Long> {
 
-    public TypePaiement findByRef(String ref);
+    public TypePaiement findByReference(String ref);
 
-    public int deleteByRef(String ref);
+    public int deleteByReference(String ref);
 
   
 

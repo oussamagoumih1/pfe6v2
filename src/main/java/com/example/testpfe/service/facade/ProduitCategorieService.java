@@ -21,5 +21,7 @@ public interface ProduitCategorieService {
 
     public int save(ProduitCategorie produitCategorie);
 
+    public int deleteMultiple(List<ProduitCategorie> produitCategories);
+
     List<ProduitCategorie> findAll();
 }

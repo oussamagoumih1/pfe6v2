@@ -1,20 +1,12 @@
 package com.example.testpfe.ws.provided;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.testpfe.Vo.EntiteAdministrativeVo;
 import com.example.testpfe.bean.EntiteAdministrative;
 import com.example.testpfe.service.facade.EntiteAdministrativeService;
+import com.example.testpfe.vo.EntiteAdministrativeVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pfe/entite-administrative")
@@ -52,6 +44,10 @@ public class EntiteAdministrativeProvidedRest {
         return entiteAdministrativeService.deleteByLibelle(libelle);
     }
 
+    @PostMapping("/delete-multiple-by-libelle")
+    public int deleteByLibelle(@RequestBody List<EntiteAdministrative> entiteAdministratives) {
+        return entiteAdministrativeService.deleteByLibelle(entiteAdministratives);
+    }
 
     @PostMapping("/search")
     public List<EntiteAdministrative> search(@RequestBody EntiteAdministrativeVo entiteAdministrativeVo) {

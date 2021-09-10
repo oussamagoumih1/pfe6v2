@@ -26,7 +26,7 @@ public class TypePaiementServiceImpl implements TypePaiementService {
 
     @Override
     public int save(TypePaiement typePaiement) {
-        TypePaiement loadedTypePaiement = findByRef(typePaiement.getRef());
+        TypePaiement loadedTypePaiement = findByReference(typePaiement.getReference());
         if (loadedTypePaiement != null) {
             return -1;
         } else {
@@ -37,13 +37,21 @@ public class TypePaiementServiceImpl implements TypePaiementService {
     }
 
     @Override
-    public TypePaiement findByRef(String ref) {
-        return typePaiementDao.findByRef(ref);
+    public int deleteMultiple(List<TypePaiement> typePaiements) {
+        int res = 0;
+        for (int i = 0; i < typePaiements.size(); i++) {
+            res += deleteByReference(typePaiements.get(i).getReference());
+        }
+        return res;      }
+
+    @Override
+    public TypePaiement findByReference(String ref) {
+        return typePaiementDao.findByReference(ref);
     }
 
     @Override
-    public int deleteByRef(String ref) {
-        return typePaiementDao.deleteByRef(ref);
+    public int deleteByReference(String ref) {
+        return typePaiementDao.deleteByReference(ref);
     }
 
     @Override

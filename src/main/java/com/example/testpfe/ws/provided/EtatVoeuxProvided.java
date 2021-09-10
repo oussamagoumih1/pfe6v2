@@ -1,23 +1,15 @@
 package com.example.testpfe.ws.provided;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.testpfe.Vo.EtatVoeuxVo;
 import com.example.testpfe.bean.EtatVoeux;
 import com.example.testpfe.service.facade.EtatVoeuxService;
+import com.example.testpfe.vo.EtatVoeuxVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/testpfe/etat-voeux")
+@RequestMapping("/pfe/etat-voeux")
 
 public class EtatVoeuxProvided {
     @Autowired

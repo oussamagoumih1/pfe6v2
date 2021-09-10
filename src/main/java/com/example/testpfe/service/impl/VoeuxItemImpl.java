@@ -1,29 +1,22 @@
 package com.example.testpfe.service.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
-import com.example.testpfe.bean.CommandeItem;
-import com.example.testpfe.bean.Voeux;
-import com.example.testpfe.service.facade.ProduitService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.example.testpfe.Vo.VoeuxItemVo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.VoeuxItem;
 import com.example.testpfe.dao.VoeuxItemDao;
 import com.example.testpfe.service.facade.VoeuxItemService;
+import com.example.testpfe.vo.VoeuxItemVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class VoeuxItemImpl implements VoeuxItemService {
 @Autowired
 private VoeuxItemDao voeuxItemDao;
 
-@Autowired
-private ProduitService produitService;
 @Autowired
 private EntityManager entityManager;
 
@@ -112,29 +105,15 @@ private EntityManager entityManager;
     }
 
     @Override
-    public int qteExpd(BigDecimal qteCommande, BigDecimal qteLivre) {
+    public int qteLivre(BigDecimal qteCommande, BigDecimal qteReceptionne) {
         VoeuxItem voeuxItem = voeuxItemDao.findByQteCommande(qteCommande);
         if (voeuxItem == null){
             return -1;
         }else {
-            BigDecimal qtExpd = voeuxItem.getQteCommande();
-            qtExpd = (qteCommande.subtract(qteLivre));
-            voeuxItem.setQteAccorde(qtExpd);
+            BigDecimal qteLivre = voeuxItem.getQteCommande();
+            qteLivre = (qteCommande.subtract(qteReceptionne));
+            voeuxItem.setQteAccorde(qteLivre);
             return 1;
         }
-    }
-
-    @Override
-    public int save(Voeux voeux, List<VoeuxItem> voeuxItems) {
-        for (VoeuxItem voeuxItem : voeuxItems) {
-            Produit produit = produitService.findByRef(voeuxItem.getProduit().getRef());
-            voeuxItem.setProduit(produit);
-            if (produit != null) {
-                voeuxItem.setVoeux(voeux);
-                voeuxItemDao.save(voeuxItem);
-            }
-        }
-        return 1;
-
     }
 }

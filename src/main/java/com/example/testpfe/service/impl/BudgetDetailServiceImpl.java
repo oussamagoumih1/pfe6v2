@@ -8,9 +8,9 @@ import com.example.testpfe.service.facade.BudgetService;
 import com.example.testpfe.vo.BudgetDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 

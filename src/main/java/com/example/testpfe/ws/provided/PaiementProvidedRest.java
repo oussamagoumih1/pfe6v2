@@ -17,7 +17,7 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/testpfe/paiement")
+@RequestMapping("/pfe/paiement")
 public class PaiementProvidedRest {
 
     @Autowired
@@ -33,14 +33,14 @@ public class PaiementProvidedRest {
         return paiementService.findByCommandeReference(reference);
     }
 
-    @DeleteMapping("/type-paiement/ref/{reference}")
-    public int deleteByTypePaiementRef(@PathVariable String reference) {
-        return paiementService.deleteByTypePaiementRef(reference);
+    @DeleteMapping("/type-paiement/Reference/{reference}")
+    public int deleteByTypePaiementReference(@PathVariable String reference) {
+        return paiementService.deleteByTypePaiementReference(reference);
     }
 
-    @GetMapping("/type-paiement/ref/{reference}")
-    public List<Paiement> findByTypePaiementRef(@PathVariable String reference) {
-        return paiementService.findByTypePaiementRef(reference);
+    @GetMapping("/type-paiement/Reference/{reference}")
+    public List<Paiement> findByTypePaiementReference(@PathVariable String reference) {
+        return paiementService.findByTypePaiementReference(reference);
     }
 
     @DeleteMapping("/reference/{reference}")
@@ -61,6 +61,11 @@ public class PaiementProvidedRest {
     @PostMapping("/")
     public int save(@RequestBody Paiement paiement) {
         return paiementService.save(paiement);
+    }
+
+    @PostMapping("/delete-multiple-by-reference")
+    public int deleteMultiple(@RequestBody List<Paiement> paiements) {
+        return paiementService.deleteMultiple(paiements);
     }
 
 }

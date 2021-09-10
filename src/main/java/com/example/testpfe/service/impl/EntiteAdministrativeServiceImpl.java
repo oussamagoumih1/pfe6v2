@@ -1,16 +1,14 @@
 package com.example.testpfe.service.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.example.testpfe.Vo.EntiteAdministrativeVo;
 import com.example.testpfe.bean.EntiteAdministrative;
 import com.example.testpfe.dao.EntiteAdministrativeDao;
 import com.example.testpfe.service.facade.EntiteAdministrativeService;
+import com.example.testpfe.vo.EntiteAdministrativeVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Service
 public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeService {
@@ -51,6 +49,15 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
     @Override
     public int deleteByLibelle(String libelle) {
         return entiteAdministrativeDao.deleteByLibelle(libelle);
+    }
+
+    @Override
+    public int deleteByLibelle(List<EntiteAdministrative> entiteAdministratives) {
+        int res=0;
+        for (int i = 0; i < entiteAdministratives.size(); i++) {
+            res+=deleteByLibelle(entiteAdministratives.get(i).getLibelle());
+        }
+        return res;
     }
 
 

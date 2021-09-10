@@ -18,7 +18,7 @@ public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ref;
+    private String reference;
 
 
     @ManyToOne
@@ -35,12 +35,12 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
-    public String getRef() {
-        return ref;
+    public String getReference() {
+        return reference;
     }
 
-    public void setRef(String ref) {
-        this.ref = ref;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public ProduitCategorie getProduitCategorie() {

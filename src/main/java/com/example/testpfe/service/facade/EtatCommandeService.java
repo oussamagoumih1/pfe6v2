@@ -1,22 +1,22 @@
 package com.example.testpfe.service.facade;
 
+import com.example.testpfe.bean.EtatComande;
+import com.example.testpfe.vo.EtatComandeVo;
+
 import java.util.List;
 
-import com.example.testpfe.Vo.EtatComandeVo;
-import com.example.testpfe.bean.EtatCommande;
-
 public interface EtatCommandeService {
-    EtatCommande save(EtatCommande etatComande);
+    EtatComande save(EtatComande etatComande);
 
-    EtatCommande update(EtatCommande etatComande);
+    EtatComande update(EtatComande etatComande);
 
-    List<EtatCommande> search(EtatComandeVo etatComandeVo);
+    List<EtatComande> search(EtatComandeVo etatComandeVo);
 
-    List<EtatCommande> findAll();
+    List<EtatComande> findAll();
 
-    EtatCommande findByLibelle(String libelle);
+    EtatComande findByLibelle(String libelle);
 
-    EtatCommande findByCode(String code);
+    EtatComande findByCode(String code);
 
     int deleteByLibelle(String libelle);
 

@@ -1,42 +1,39 @@
 package com.example.testpfe.service.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
+import com.example.testpfe.bean.EtatComande;
+import com.example.testpfe.dao.EtatComandeDao;
+import com.example.testpfe.service.facade.EtatCommandeService;
+import com.example.testpfe.vo.EtatComandeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.testpfe.Vo.EtatComandeVo;
-import com.example.testpfe.bean.EtatCommande;
-import com.example.testpfe.dao.EtatComandeDao;
-import com.example.testpfe.service.facade.EtatCommandeService;
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Service
 public class EtatCommandeServiceImpl implements EtatCommandeService {
     @Autowired
     private EtatComandeDao etatComandeDao;
 
-
     @Autowired
     private EntityManager entityManager;
 
 
     @Override
-    public EtatCommande save(EtatCommande etatComande) {
+    public EtatComande save(EtatComande etatComande) {
         if (findByLibelle(etatComande.getLibelle())==null)
             etatComandeDao.save(etatComande);
         return etatComande;
     }
 
     @Override
-    public EtatCommande update(EtatCommande etatComande) {
+    public EtatComande update(EtatComande etatComande) {
         return etatComandeDao.save(etatComande);
     }
 
     @Override
-    public List<EtatCommande> search(EtatComandeVo etatComandeVo) {
-        String q = "select ec from EtatCommande ec where 1=1";
+    public List<EtatComande> search(EtatComandeVo etatComandeVo) {
+        String q = "select ec from EtatComande ec where 1=1";
         if (etatComandeVo.getLibelle()!=null){
             q += " And ec.libelle LIKE '%" + etatComandeVo.getLibelle() + "%'";
         }
@@ -47,17 +44,17 @@ public class EtatCommandeServiceImpl implements EtatCommandeService {
     }
 
     @Override
-    public List<EtatCommande> findAll() {
+    public List<EtatComande> findAll() {
         return etatComandeDao.findAll();
     }
 
     @Override
-    public EtatCommande findByLibelle(String libelle) {
+    public EtatComande findByLibelle(String libelle) {
         return etatComandeDao.findByLibelle(libelle);
     }
 
     @Override
-    public EtatCommande findByCode(String code) {
+    public EtatComande findByCode(String code) {
         return etatComandeDao.findByCode(code);
     }
 

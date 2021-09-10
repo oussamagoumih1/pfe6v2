@@ -23,9 +23,9 @@ public interface PaiementDao extends JpaRepository<Paiement, Long> {
 
     public List<Paiement> findByCommandeReference(String reference);
 
-    public int deleteByTypePaiementRef(String reference);
+    public int deleteByTypePaiementReference(String reference);
 
-    public List<Paiement> findByTypePaiementRef(String reference);
+    public List<Paiement> findByTypePaiementReference(String reference);
 
     public int deleteByReference(String refPaiement);
 

@@ -1,6 +1,6 @@
 package com.example.testpfe.ws.provided;
 
-import com.example.testpfe.Vo.VoeuxCommandVo;
+import com.example.testpfe.vo.VoeuxCommandVo;
 import com.example.testpfe.bean.CommandeItem;
 import com.example.testpfe.bean.VoeuxCommand;
 import com.example.testpfe.bean.VoeuxItem;

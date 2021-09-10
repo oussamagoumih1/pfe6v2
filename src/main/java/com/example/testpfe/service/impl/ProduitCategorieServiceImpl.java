@@ -5,6 +5,7 @@ import com.example.testpfe.dao.ProduitCategorieDao;
 import com.example.testpfe.service.facade.ProduitCategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -24,6 +25,15 @@ public class ProduitCategorieServiceImpl implements ProduitCategorieService {
             return 1;
         }
 
+    }
+
+    @Override
+    public int deleteMultiple(List<ProduitCategorie> produitCategories) {
+        int res = 0;
+        for (int i = 0; i < produitCategories.size(); i++) {
+            res += deleteByReference(produitCategories.get(i).getReference());
+        }
+        return res;
     }
 
     @Override

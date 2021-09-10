@@ -1,14 +1,14 @@
 package com.example.testpfe.service.facade;
 
-import java.util.List;
-
-import com.example.testpfe.Vo.VoeuxVo;
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.Voeux;
+import com.example.testpfe.vo.VoeuxVo;
+
+import java.util.List;
 
 public interface VoeuxService {
 
-    int save(Voeux voeux);
+    Voeux save(Voeux voeux);
 
     Voeux update(Voeux voeux);
 

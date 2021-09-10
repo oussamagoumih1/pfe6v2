@@ -1,4 +1,4 @@
-package com.example.testpfe.Vo;
+package com.example.testpfe.vo;
 
 import java.math.BigDecimal;
 
