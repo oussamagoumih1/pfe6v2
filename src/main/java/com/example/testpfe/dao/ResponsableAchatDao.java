@@ -8,8 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface ResponsableAchatDao extends JpaRepository<ResponsableAchat,Long> {
-    List<ResponsableAchat> findByEntrepriseCode(String code);
-    int deleteByEntrepriseCode(String code);
     int deleteByCode (String code);
     Optional<ResponsableAchat> findById(Long id);
     ResponsableAchat findByCode(String code);
