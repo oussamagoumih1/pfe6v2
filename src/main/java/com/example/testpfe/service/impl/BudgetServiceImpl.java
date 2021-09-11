@@ -1,6 +1,7 @@
 package com.example.testpfe.service.impl;
 
 import com.example.testpfe.bean.Budget;
+import com.example.testpfe.bean.BudgetDetail;
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
 import com.example.testpfe.dao.BudgetDao;
 import com.example.testpfe.service.facade.BudgetDetailService;
@@ -27,12 +28,15 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public int save(Budget budget) {
+        calculerTotal(budget, budget.getBudgetEntiteAdministratives());
+        calculerTotalPaye(budget, budget.getBudgetEntiteAdministratives());
+        calculerTotalReserve(budget, budget.getBudgetEntiteAdministratives());
       if (findByAnnee(budget.getAnnee()) != null){
           return -1;
-      } else if (budget.getMtTotal().compareTo(budget.getMtPaye())  <0) {
+      } else if (budget.getMtTotal().subtract(budget.getMtPaye()).doubleValue() <0) {
           return -2;
-      } else {
-          calculerTotal(budget, budget.getBudgetEntiteAdministratives());
+    } else {
+
             budgetDao.save(budget);
           budgetEntiteAdministrativeService.save(budget, budget.getBudgetEntiteAdministratives());
             return 1;
