@@ -1,11 +1,21 @@
-package com.example.testpfe.dao;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.example.testpfe.service.facade;
 
+import com.example.testpfe.bean.Livraison;
 import com.example.testpfe.bean.LivraisonItem;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface LivraisonItemDao extends JpaRepository<LivraisonItem, Long> {
+/**
+ *
+ * @author admin
+ */
+public interface LivraisonItemService {
+
     public LivraisonItem findByReference(String reference);
 
     public int deleteByReference(String reference);
@@ -17,4 +27,8 @@ public interface LivraisonItemDao extends JpaRepository<LivraisonItem, Long> {
     public int deleteByProduitReference(String reference);
 
     public List<LivraisonItem> findByProduitReference(String reference);
+
+    public int save(Livraison Livraison, List<LivraisonItem> LivraisonItems);
+
+    List<LivraisonItem> findAll();
 }
