@@ -41,6 +41,7 @@ public class CommandeServiceImpl implements CommandeService {
     @Autowired
     private EntityManager entityManager;
 
+
     @Override
     public int save(Commande commande) {
 
@@ -48,7 +49,7 @@ public class CommandeServiceImpl implements CommandeService {
         Commande loadedCommande = findByReference(commande.getReference());
         if (loadedCommande != null) {
             return -1;
-        } else if (commande.getTotal().subtract(commande.getTotalPaye()).doubleValue() < 0) {
+        } else if (commande.getTotal()!= null && commande.getTotalPaye() != null && commande.getTotal().subtract(commande.getTotalPaye()).doubleValue() < 0) {
 
             return -2;
         }
@@ -59,9 +60,13 @@ public class CommandeServiceImpl implements CommandeService {
         }
         Budget budget = commande.getBudget();
         BigDecimal mtReserveRestant = budget.getMtTotal().subtract(budget.getMtPaye().add(budget.getMtReserve()));
-        if (commande.getTotal().subtract(mtReserveRestant).doubleValue() < 0){
+        System.out.println("mtReserveRestant = " + mtReserveRestant);
+        System.out.println("commande.getTotal() = " + commande.getTotal());
+        if (budget.getMtTotal().subtract(mtReserveRestant).doubleValue() < 0){
             return -4;
-        }else {
+        }
+        else  {
+
             updateMtReserveBudget(budget, commande);
             commandeDao.save(commande);
             commandeItemService.save(commande, commande.getCommandeItems());

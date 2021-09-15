@@ -7,11 +7,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class TestpfeApplication {
-    public static ConfigurableApplicationContext ctx;
     public static void main(String[] args) {
-        ctx= SpringApplication.run(TestpfeApplication.class, args);
-
+        SpringApplication.run(TestpfeApplication.class, args);
     }
+
 
 
 
