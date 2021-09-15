@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.chef_department;
 
 import com.example.testpfe.bean.CommandeItem;
 import com.example.testpfe.service.facade.CommandeItemService;
@@ -17,8 +17,8 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe/commande-item")
-public class CommandeItemProvidedRest {
+@RequestMapping("/pfe/chef-department/commande-item")
+public class CommandeItemCDRest {
 
     @Autowired
     private CommandeItemService commandeItemService;

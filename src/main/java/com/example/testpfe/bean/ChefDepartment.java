@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
-@DiscriminatorValue("chef-department")
 public class ChefDepartment extends User implements Serializable {
 
     private String propritie;

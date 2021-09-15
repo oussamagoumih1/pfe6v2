@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.chef_department;
 
-import com.example.testpfe.vo.CommandeVo;
 import com.example.testpfe.bean.Commande;
 import com.example.testpfe.service.facade.CommandeService;
+import com.example.testpfe.vo.CommandeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +19,8 @@ import java.util.List;
  * @author admin
  */
 @RestController
-@RequestMapping("/pfe/commande")
-public class CommandeProvidedRest {
+@RequestMapping("/pfe/chef-department/commande")
+public class CommandeCDRest {
 
     @Autowired
     private CommandeService commandeService;

@@ -60,7 +60,6 @@ public class EntiteAdministrativeServiceImpl implements EntiteAdministrativeServ
         return res;
     }
 
-
     @Override
     public List<EntiteAdministrative> search(EntiteAdministrativeVo entiteAdministrativeVo) {
         String q =  "select ea from EntiteAdministrative ea where 1=1";

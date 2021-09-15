@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.chef_department;
 
 import com.example.testpfe.bean.TypePaiement;
 import com.example.testpfe.service.facade.TypePaiementService;
@@ -15,8 +15,8 @@ import java.util.List;
 /** *
  * @author admin
  */@RestController
-@RequestMapping("/pfe/admin/type-paiement")
-public class TypePaiementProvidedRest {
+@RequestMapping("/pfe/chef-department/admin/type-paiement")
+public class TypePaiementCDRest {
     
     @Autowired
     private TypePaiementService typePaiementService;

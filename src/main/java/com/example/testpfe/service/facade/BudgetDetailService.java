@@ -16,6 +16,7 @@ public interface BudgetDetailService {
 
     int deleteByMtInvReserveReliquat(List<BudgetDetail> budgetDetails);
 
+    int deleteByMtInvReserveReliquat(List<BudgetDetail> budgetDetails);
 
     int save(BudgetDetail budgetDetail);
 

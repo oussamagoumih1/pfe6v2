@@ -11,9 +11,9 @@ public interface ChefDepartmentService {
     Optional<ChefDepartment> findById(Long id);
     int deleteByCode(String code);
     List<ChefDepartment> findAll();
-    ChefDepartment  save(ChefDepartment chefAgence);
+    ChefDepartment  save(ChefDepartment chefDepartment);
     ChefDepartment findByLogin(String login);
-    ChefDepartment seconnecter(ChefDepartment chefAgence);
-    ChefDepartment update(ChefDepartment chefAgence);
+    ChefDepartment seconnecter(ChefDepartment chefDepartment);
+    ChefDepartment update(ChefDepartment chefDepartment);
 }
 

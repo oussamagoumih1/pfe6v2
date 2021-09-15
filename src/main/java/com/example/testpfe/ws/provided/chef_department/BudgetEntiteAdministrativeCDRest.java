@@ -1,4 +1,4 @@
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.chef_department;
 
 
 import com.example.testpfe.bean.BudgetEntiteAdministrative;
@@ -11,8 +11,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/pfe/budget-entite-administrative")
-public class BudgetEntiteAdministrativeProvidedRest {
+@RequestMapping("/pfe/chef-department/budget-entite-administrative")
+public class BudgetEntiteAdministrativeCDRest {
     @Autowired
     private BudgetEntiteAdministrativeService budgetEntiteAdministrativeService;
 

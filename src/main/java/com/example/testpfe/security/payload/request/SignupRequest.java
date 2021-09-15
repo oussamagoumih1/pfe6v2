@@ -1,10 +1,6 @@
 package com.example.testpfe.security.payload.request;
 
-
-
 import com.example.testpfe.bean.User;
-
-import javax.validation.constraints.*;
 
 public class SignupRequest extends User {
 

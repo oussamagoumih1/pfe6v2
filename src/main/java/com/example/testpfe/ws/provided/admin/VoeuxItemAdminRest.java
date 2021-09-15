@@ -1,4 +1,4 @@
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.admin;
 
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.VoeuxItem;
@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/voeux-item")
+@RequestMapping("/pfe/admin/voeux-item")
 
-public class VoeuxItemProvided {
+public class VoeuxItemAdminRest {
     @Autowired
     private VoeuxItemService voeuxItemService;
 

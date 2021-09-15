@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@DiscriminatorValue("responsable-achat")
 public class ResponsableAchat extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;

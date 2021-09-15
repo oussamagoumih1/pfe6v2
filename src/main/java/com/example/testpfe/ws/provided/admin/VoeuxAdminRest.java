@@ -1,4 +1,4 @@
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.admin;
 
 import com.example.testpfe.bean.Produit;
 import com.example.testpfe.bean.Voeux;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/voeux")
+@RequestMapping("/pfe/admin/voeux")
 
-public class VoeuxProvided {
+public class VoeuxAdminRest {
     @Autowired
     private VoeuxService voeuxService;
 

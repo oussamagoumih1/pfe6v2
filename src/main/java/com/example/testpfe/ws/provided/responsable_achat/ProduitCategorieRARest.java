@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.responsable_achat;
 
 import com.example.testpfe.bean.ProduitCategorie;
 import com.example.testpfe.service.facade.ProduitCategorieService;
@@ -18,8 +18,8 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/pfe/admin/produit-categorie")
-public class ProduitCategorieProvidedRest {
+@RequestMapping("/pfe/responsable-achat/produit-categorie")
+public class ProduitCategorieRARest {
        @Autowired 
     private ProduitCategorieService produitCategorieService;
 

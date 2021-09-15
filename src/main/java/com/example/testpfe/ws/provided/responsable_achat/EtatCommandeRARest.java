@@ -1,4 +1,4 @@
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.responsable_achat;
 
 import com.example.testpfe.bean.EtatComande;
 import com.example.testpfe.service.facade.EtatCommandeService;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pfe/etat-commande")
+@RequestMapping("/pfe/responsable-achat/etat-commande")
 
-public class EtatCommandeProvided {
+public class EtatCommandeRARest {
     @Autowired
     private EtatCommandeService etatCommandeService;
 

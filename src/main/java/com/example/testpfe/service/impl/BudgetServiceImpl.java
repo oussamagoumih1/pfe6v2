@@ -34,7 +34,7 @@ public class BudgetServiceImpl implements BudgetService {
       } else {
           calculerTotal(budget, budget.getBudgetEntiteAdministratives());
             budgetDao.save(budget);
-          budgetEntiteAdministrativeService.save(budget, budget.getBudgetEntiteAdministratives());
+            budgetEntiteAdministrativeService.save(budget, budget.getBudgetEntiteAdministratives());
             return 1;
         }
     }
@@ -46,6 +46,7 @@ public class BudgetServiceImpl implements BudgetService {
         }
         budget.setMtTotal(mtTotal);
     }
+
     private void calculerTotalPaye(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
         BigDecimal mtPaye = BigDecimal.valueOf(0);
         for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
@@ -53,6 +54,7 @@ public class BudgetServiceImpl implements BudgetService {
         }
         budget.setMtTotal(mtPaye);
     }
+
     private void calculerTotalReserve(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
         BigDecimal mtReserve = BigDecimal.valueOf(0);
         for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
@@ -60,6 +62,7 @@ public class BudgetServiceImpl implements BudgetService {
         }
         budget.setMtTotal(mtReserve);
     }
+
     private void calculerTotalReste(Budget budget, List<BudgetEntiteAdministrative> budgetEntiteAdministratives) {
         BigDecimal mtReste = BigDecimal.valueOf(0);
         for (BudgetEntiteAdministrative budgetEntiteAdministrative : budgetEntiteAdministratives) {
@@ -122,6 +125,14 @@ public class BudgetServiceImpl implements BudgetService {
         return budgetDao.findByAnnee(annee);
     }
 
+    @Override
+    public int deleteByAnnee(List<Budget> budgets) {
+        int res = 0;
+        for (int i = 0; i < budgets.size(); i++) {
+            res += deleteByAnnee(budgets.get(i).getAnnee());
+        }
+        return res;
+    }
 
     @Override
     public List<Budget> findAll() {

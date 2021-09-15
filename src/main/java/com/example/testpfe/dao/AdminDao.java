@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AdminDao extends JpaRepository<Admin, Long> {
+public interface AdminDao extends JpaRepository <Admin, Long> {
 
     Optional<Admin> findByLogin (String login);
 

@@ -1,10 +1,10 @@
-package com.example.testpfe.ws.provided;
+package com.example.testpfe.ws.provided.chef_department;
 
-import com.example.testpfe.vo.VoeuxCommandVo;
 import com.example.testpfe.bean.CommandeItem;
 import com.example.testpfe.bean.VoeuxCommand;
 import com.example.testpfe.bean.VoeuxItem;
 import com.example.testpfe.service.facade.VoeuxCommandService;
+import com.example.testpfe.vo.VoeuxCommandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/testpfe/voeux-command")
-public class VoeuxCommandProvidedRest {
+@RequestMapping("/pfe/chef-department/voeux-command")
+public class VoeuxCommandCDRest {
     @Autowired
     private VoeuxCommandService voeuxCommandService;
 

@@ -5,7 +5,7 @@ import com.example.testpfe.bean.Role;
 
 import com.example.testpfe.service.util.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import com.example.testpfe.bean.Role;
 import java.util.Optional;
 
 public interface RoleDao extends JpaRepository <Role,Long> {
